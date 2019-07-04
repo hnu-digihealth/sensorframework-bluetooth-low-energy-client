@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "C:\\git\\capacitorTest\\node_modules\\cap-bluetooth-low-energy-client\\android\\build\\intermediates\\res\\merged\\release\\drawable-v21\\abc_dialog_material_background.xml",
+        "source": "C:\\Users\\robin\\.gradle\\caches\\transforms-2\\files-2.1\\36650818b3f6cfbecad2967e19c2c730\\res\\drawable-v21\\abc_dialog_material_background.xml"
+    },
+    {
+        "merged": "C:\\git\\capacitorTest\\node_modules\\cap-bluetooth-low-energy-client\\android\\build\\intermediates\\res\\merged\\release\\drawable-v21\\design_bottom_navigation_item_background.xml",
+        "source": "C:\\Users\\robin\\.gradle\\caches\\transforms-2\\files-2.1\\e37b5c567159da8583eb5160ebaf213d\\res\\drawable-v21\\design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "C:\\git\\capacitorTest\\node_modules\\cap-bluetooth-low-energy-client\\android\\build\\intermediates\\res\\merged\\release\\drawable-v21\\notification_action_background.xml",
+        "source": "C:\\Users\\robin\\.gradle\\caches\\transforms-2\\files-2.1\\c93199f50ee31481bb3ec936102f9f0f\\res\\drawable-v21\\notification_action_background.xml"
+    },
+    {
+        "merged": "C:\\git\\capacitorTest\\node_modules\\cap-bluetooth-low-energy-client\\android\\build\\intermediates\\res\\merged\\release\\drawable-v21\\avd_hide_password.xml",
+        "source": "C:\\Users\\robin\\.gradle\\caches\\transforms-2\\files-2.1\\e37b5c567159da8583eb5160ebaf213d\\res\\drawable-v21\\avd_hide_password.xml"
+    },
+    {
+        "merged": "C:\\git\\capacitorTest\\node_modules\\cap-bluetooth-low-energy-client\\android\\build\\intermediates\\res\\merged\\release\\drawable-v21\\abc_btn_colored_material.xml",
+        "source": "C:\\Users\\robin\\.gradle\\caches\\transforms-2\\files-2.1\\36650818b3f6cfbecad2967e19c2c730\\res\\drawable-v21\\abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "C:\\git\\capacitorTest\\node_modules\\cap-bluetooth-low-energy-client\\android\\build\\intermediates\\res\\merged\\release\\drawable-v21\\design_password_eye.xml",
+        "source": "C:\\Users\\robin\\.gradle\\caches\\transforms-2\\files-2.1\\e37b5c567159da8583eb5160ebaf213d\\res\\drawable-v21\\design_password_eye.xml"
+    },
+    {
+        "merged": "C:\\git\\capacitorTest\\node_modules\\cap-bluetooth-low-energy-client\\android\\build\\intermediates\\res\\merged\\release\\drawable-v21\\abc_list_divider_material.xml",
+        "source": "C:\\Users\\robin\\.gradle\\caches\\transforms-2\\files-2.1\\36650818b3f6cfbecad2967e19c2c730\\res\\drawable-v21\\abc_list_divider_material.xml"
+    },
+    {
+        "merged": "C:\\git\\capacitorTest\\node_modules\\cap-bluetooth-low-energy-client\\android\\build\\intermediates\\res\\merged\\release\\drawable-v21\\avd_show_password.xml",
+        "source": "C:\\Users\\robin\\.gradle\\caches\\transforms-2\\files-2.1\\e37b5c567159da8583eb5160ebaf213d\\res\\drawable-v21\\avd_show_password.xml"
+    },
+    {
+        "merged": "C:\\git\\capacitorTest\\node_modules\\cap-bluetooth-low-energy-client\\android\\build\\intermediates\\res\\merged\\release\\drawable-v21\\abc_action_bar_item_background_material.xml",
+        "source": "C:\\Users\\robin\\.gradle\\caches\\transforms-2\\files-2.1\\36650818b3f6cfbecad2967e19c2c730\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "C:\\git\\capacitorTest\\node_modules\\cap-bluetooth-low-energy-client\\android\\build\\intermediates\\res\\merged\\release\\drawable-v21\\abc_edit_text_material.xml",
+        "source": "C:\\Users\\robin\\.gradle\\caches\\transforms-2\\files-2.1\\36650818b3f6cfbecad2967e19c2c730\\res\\drawable-v21\\abc_edit_text_material.xml"
+    }
+]

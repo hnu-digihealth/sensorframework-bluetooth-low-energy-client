@@ -9,9 +9,11 @@ declare module "@capacitor/core" {
 
 export interface BluetoothLEClientPlugin {
 
-  isAvailable(): Promise<{isAvailable: boolean}>;
+  isAvailable(): Promise<BluetoothGATTAvailabilityResult>;
 
-  isEnabled(): Promise<{enabled: boolean}>;
+  isEnabled(): Promise<BluetoothGATTEnabledResult>;
+
+  enable(): Promise<BluetoothGATTEnableResult>;
 
   scan(options: BluetoothGATTScanOptions): Promise<BluetoothGATTScanResults>;
 
@@ -35,6 +37,18 @@ export interface BluetoothLEClientPlugin {
 
   getCharacteristic(options: GetCharacteristicOptions): Promise<GetCharacteristicResult>;
 
+}
+
+export type BluetoothGATTAvailabilityResult = {
+  isAvailable: boolean
+}
+
+export type BluetoothGATTEnabledResult = {
+  enabled: boolean
+}
+
+export type BluetoothGATTEnableResult = {
+  enabled: boolean
 }
 
 export type BluetoothGATTScanOptions = {
@@ -67,6 +81,10 @@ export type BluetoothGATTDisconnectResult = {
 
 export type BluetoothGATTServiceDiscoveryOptions = {
   id: string
+}
+
+export type BluetoothGATTServiceDiscoveryResult = {
+  discovered: true
 }
 
 export type BluetoothGATTByteData = number[];
@@ -115,6 +133,14 @@ export type BluetoothGATTNotificationOptions = {
   characteristic: BluetoothGattCharacteristics | number,
 }
 
+export type BluetoothGATTEnableNotificationsResult = {
+  enabled: true
+}
+
+export type BluetoothGATTDisableNotificationsResult = {
+  disabled: true
+}
+
 export type GetServiceOptions = {
   id:string,
   service?: BluetoothGattServices | number
@@ -154,4 +180,7 @@ export type GATTCharacteristic = {
 }
 
 export type GetCharacteristicResult = GATTCharacteristic | {characteristics: GATTCharacteristic[]};
+
+export type BluetoothGATTCallback = (data: BluetoothGATTByteData) => any;
+export type BluetoothGATTCallbacks = {[characteristic: number]: BluetoothGATTCallback};
 

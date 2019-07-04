@@ -1,48 +1,36 @@
 import {BluetoothGattCharacteristics} from "./ble-gatt-characteristics.enum";
-import {BluetoothGattServices} from "./ble-gatt-services.enum";
-import {BluetoothGATTByteData} from "../definitions";
-
-export const getEventName = (id: string, service: BluetoothGattServices | number, characteristic: BluetoothGattCharacteristics | number) => {
-    return `${id}:${service}:${characteristic}`;
-}
-
-
-
-export type BluetoothGattNotificationCallback = (data: BluetoothGATTByteData) => any;
-export type BluetoothGattNotificationCallbacks = {[characteristic: number]: BluetoothGattNotificationCallback};
-
-export const Callbacks: BluetoothGattNotificationCallbacks = {
-
-    [BluetoothGattCharacteristics.BATTERY_LEVEL]: (data: BluetoothGATTByteData) => data[0],
-
-    [BluetoothGattCharacteristics.BODY_SENSOR_LOCATION]: (data: BluetoothGATTByteData) => data[0],
-
-    [BluetoothGattCharacteristics.HEART_RATE_MEASUREMENT]: (data: BluetoothGATTByteData) => {
-
-        console.log(data);
-
-        const flags = data[0];
-        const type = ((flags >> 0) & 1) == 1 ? "UINT16" : "UINT8";
-        const value = data[1];
-
-        let measurement: {[key:string]: any} = {type, value};
-
-        const energyExpendedBytePresent = ((flags >> 3) & 1) == 1;
-
-        if(energyExpendedBytePresent){
-          const energyExpended = {
-              value: data[2],
-              unit: "JOULE"
-          };
-          measurement = {...measurement, energyExpended}
-        }
-
-        return measurement;
-    }
+import {BatteryLevelCallback} from "./transformers/battery-level";
+import {BodySensorLocationCallback} from "./transformers/body-sensor-location";
+import {HeartRateMeasurementCallback} from "./transformers/heart-rate-measurement";
+import {CurrentTimeCallback} from "./transformers/current-time";
+import {BloodPressureMeasurementCallback} from "./transformers/blood-pressure-measurement";
+import {BloodPressureFeatureCallback} from "./transformers/blood-pressure-feature";
+import {BodyCompositionMeasurementCallback} from "./transformers/body-composition-measurement";
+import {BodyCompositionFeatureCallback} from "./transformers/body-composition-feature";
+import {PLXFeaturesCallback} from "./transformers/plx-features";
+import {PLXSpotCheckMeasurementCallback} from "./transformers/plx-spot-check-measurement";
+import {PLXContinuousMeasurementCallback} from "./transformers/plx-continuous-measurement";
+import {BluetoothGATTCallbacks} from "../definitions";
+import {GlucoseMeasurementCallback} from "./transformers/glucose-measurement";
+import {GlucoseMeasurementContextCallback} from "./transformers/glucose-measurement-context";
+import {GlucoseFeatureCallback} from "./transformers/glucose-feature";
 
 
-
-
-}
+export const Callbacks: BluetoothGATTCallbacks = {
+    [BluetoothGattCharacteristics.BATTERY_LEVEL]: BatteryLevelCallback,
+    [BluetoothGattCharacteristics.BODY_SENSOR_LOCATION]: BodySensorLocationCallback,
+    [BluetoothGattCharacteristics.HEART_RATE_MEASUREMENT]: HeartRateMeasurementCallback,
+    [BluetoothGattCharacteristics.CURRENT_TIME]: CurrentTimeCallback,
+    [BluetoothGattCharacteristics.BLOOD_PRESSURE_MEASUREMENT]: BloodPressureMeasurementCallback,
+    [BluetoothGattCharacteristics.BLOOD_PRESSURE_FEATURE]: BloodPressureFeatureCallback,
+    [BluetoothGattCharacteristics.BODY_COMPOSITION_MEASUREMENT]: BodyCompositionMeasurementCallback,
+    [BluetoothGattCharacteristics.BODY_COMPOSITION_FEATURE]: BodyCompositionFeatureCallback,
+    [BluetoothGattCharacteristics.PLX_FEATURES]: PLXFeaturesCallback,
+    [BluetoothGattCharacteristics.PLX_SPOT_CHECK_MEASUREMENT]: PLXSpotCheckMeasurementCallback,
+    [BluetoothGattCharacteristics.PLX_CONTINUOUS_MEASUREMENT]: PLXContinuousMeasurementCallback,
+    [BluetoothGattCharacteristics.GLUCOSE_MEASUREMENT]: GlucoseMeasurementCallback,
+    [BluetoothGattCharacteristics.GLUCOSE_MEASUREMENT_CONTEXT]: GlucoseMeasurementContextCallback,
+    [BluetoothGattCharacteristics.GLUCOSE_FEATURE]: GlucoseFeatureCallback
+};
 
 

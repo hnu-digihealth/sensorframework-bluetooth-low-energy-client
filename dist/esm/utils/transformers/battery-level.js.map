@@ -1,0 +1,1 @@
+{"version":3,"file":"battery-level.js","sourceRoot":"","sources":["../../../../src/utils/transformers/battery-level.ts"],"names":[],"mappings":"AACA,OAAO,EAAC,UAAU,EAAC,MAAM,UAAU,CAAC;AAEpC,MAAM,CAAC,MAAM,oBAAoB,GAA0B,CAAC,IAA2B,EAAE,EAAE;IAEvF,MAAM,IAAI,GAAG,UAAU,CAAC,IAAI,CAAC,CAAC;IAC9B,MAAM,YAAY,GAAG,IAAI,CAAC,QAAQ,CAAC,CAAC,CAAC,CAAC;IAEtC,OAAO,YAAY,CAAC;AAExB,CAAC,CAAC"}

@@ -1,17 +1,27 @@
 import { WebPlugin } from '@capacitor/core';
 import {
+  BluetoothGATTAvailabilityResult,
   BluetoothGATTCharacteristicReadOptions,
   BluetoothGATTCharacteristicReadResult,
   BluetoothGATTCharacteristicWriteOptions,
-  BluetoothGATTCharacteristicWriteResult, BluetoothGATTConnectOptions, BluetoothGATTConnectResult,
+  BluetoothGATTCharacteristicWriteResult,
+  BluetoothGATTConnectOptions,
+  BluetoothGATTConnectResult,
   BluetoothGATTDescriptorReadOptions,
   BluetoothGATTDescriptorReadResult,
   BluetoothGATTDescriptorWriteOptions,
   BluetoothGATTDescriptorWriteResult,
+  BluetoothGATTDisableNotificationsResult,
   BluetoothGATTDisconnectOptions,
   BluetoothGATTDisconnectResult,
-  BluetoothGATTNotificationOptions, BluetoothGATTScanOptions, BluetoothGATTScanResults,
+  BluetoothGATTEnabledResult,
+  BluetoothGATTEnableNotificationsResult,
+  BluetoothGATTEnableResult,
+  BluetoothGATTNotificationOptions,
+  BluetoothGATTScanOptions,
+  BluetoothGATTScanResults,
   BluetoothGATTServiceDiscoveryOptions,
+  BluetoothGATTServiceDiscoveryResult,
   BluetoothLEClientPlugin,
   GATTCharacteristicProperties,
   GetCharacteristicOptions,
@@ -19,6 +29,9 @@ import {
   GetServiceOptions,
   GetServiceResult
 } from './definitions';
+import {get16BitUUID} from "./utils/utils";
+import {BluetoothGattCharacteristics} from "./utils/ble-gatt-characteristics.enum";
+import {NotConnectedError, OptionsRequiredError} from "./utils/errors";
 
 const nav: Navigator = navigator;
 
@@ -35,18 +48,36 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
     });
   }
 
-  async isAvailable(): Promise<{isAvailable: boolean}> {
-    const isAvailable = true;//await nav.bluetooth.getAvailability();
+  /**
+   * Returns {isAvailable: true} by default since there is no proper way to check whether Bluetooth is available
+   */
+  async isAvailable(): Promise<BluetoothGATTAvailabilityResult> {
+    const isAvailable = true;
     return {isAvailable};
   }
 
-  async isEnabled(): Promise<{enabled: boolean}>{
-    console.warn("Mehod not available in browser");
-    return;
+  /**
+   * Returns {enabled: true} by default since there is no proper way to check whether Bluetooth is enabled
+   */
+  async isEnabled(): Promise<BluetoothGATTEnabledResult>{
+    const enabled = true;
+    return {enabled};
+  }
+
+  /**
+   * Returns {enabled: true} by default since there is no proper way to enable bluetooth from the web browser
+   */
+  async enable(): Promise<BluetoothGATTEnableResult>{
+    return {enabled: true};
   }
 
   async scan(options: BluetoothGATTScanOptions): Promise<BluetoothGATTScanResults>{
-    let device: BluetoothDevice;
+
+    if(!options){
+      return Promise.reject(new OptionsRequiredError());
+    }
+
+
 
     const filters = options.services.map((service) => {
       return {services: [service]};
@@ -55,7 +86,7 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
 
     try {
 
-      device = await nav.bluetooth.requestDevice({filters, optionalServices, acceptAllDevices: false});
+      const device = await nav.bluetooth.requestDevice({filters, optionalServices, acceptAllDevices: false});
       const {id, name} = device;
       this.devices.set(id, device);
 
@@ -68,441 +99,374 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
 
   async connect( options: BluetoothGATTConnectOptions):Promise<BluetoothGATTConnectResult>{
 
+    if(!options){
+      return Promise.reject(new OptionsRequiredError());
+    }
+
     const {id} = options;
     this.checkArgs({id});
 
-    let gatt: BluetoothRemoteGATTServer;
-
-    let connection: Map<string, any> = this.getConnection(id);
-
     try {
 
-      if(connection){
-        return {connected: true};
-      } else {
-        const  device = this.devices.get(id);
-        gatt = await device.gatt.connect();
-      }
+      this.getConnection(id);
+      return {connected: true};
+
     }catch (e) {
-      return Promise.reject(e);
+
+      try {
+
+        const  device = this.devices.get(id);
+        const gatt = await device.gatt.connect();
+        const connection = new Map();
+        connection.set("peripheral", gatt);
+        this.connections.set(id, connection);
+
+        return {connected: true};
+      } catch (e) {
+        return Promise.reject(e)
+      }
     }
-
-    connection = new Map();
-    connection.set("peripheral", gatt);
-    this.connections.set(id, connection);
-
-    return {connected: true};
 
   }
 
   async disconnect(options: BluetoothGATTDisconnectOptions): Promise<BluetoothGATTDisconnectResult>{
 
+    if(!options){
+      return Promise.reject(new OptionsRequiredError());
+    }
+
     const {id} = options;
     this.checkArgs({id});
 
+    try {
+      const connection = this.getConnection(id);
+      const gatt: BluetoothRemoteGATTServer = connection.get("peripheral");
+      await gatt.disconnect()
+      this.connections.delete(id);
 
-    const connection: Map<string, any> = this.getConnection(id);
+      return {disconnected: true};
+    } catch (e) {
+      return Promise.reject(e);
+    }
+  }
 
-    if(!connection){
-      return Promise.reject(new Error("Not connected to peripheral"));
+  async discover(options: BluetoothGATTServiceDiscoveryOptions): Promise<BluetoothGATTServiceDiscoveryResult>{
+
+    console.log(options)
+    return {discovered: true};
+  }
+
+  async read(options:BluetoothGATTCharacteristicReadOptions): Promise<BluetoothGATTCharacteristicReadResult>{
+
+    if(!options){
+      return Promise.reject(new OptionsRequiredError());
+    }
+
+    const {id, service, characteristic} = options;
+    this.checkArgs({id, service, characteristic});
+
+    try {
+      const connection = this.connections.get(id);
+      const gatt: BluetoothRemoteGATTServer = connection.get("peripheral") as BluetoothRemoteGATTServer;
+      const gattService: BluetoothRemoteGATTService = await gatt.getPrimaryService(service);
+      const gattCharacteristic: BluetoothRemoteGATTCharacteristic = await gattService.getCharacteristic(characteristic);
+
+      const dataView = await gattCharacteristic.readValue();
+      const value = [...new Uint8Array(dataView.buffer)];
+
+      return {value};
+
+    }catch (e) {
+      return Promise.reject(e);
+    }
+  }
+
+  async write(options: BluetoothGATTCharacteristicWriteOptions): Promise<BluetoothGATTCharacteristicWriteResult>{
+
+    if(!options){
+      return Promise.reject(new OptionsRequiredError());
+    }
+
+    const {id, service, characteristic, value} = options;
+    this.checkArgs({id, service, characteristic, value});
+
+    try {
+      const connection = this.getConnection(id);
+      const gatt: BluetoothRemoteGATTServer = connection.get("peripheral");
+      const gattService: BluetoothRemoteGATTService = await gatt.getPrimaryService(service);
+      const gattCharacteristic: BluetoothRemoteGATTCharacteristic = await gattService.getCharacteristic(characteristic);
+
+      const encoder = new TextEncoder();
+      const toWrite = encoder.encode(value);
+
+      await gattCharacteristic.writeValue(toWrite)
+
+      return {
+        value: [...(new Uint8Array(toWrite.buffer))]
+      }
+    }catch (e) {
+      return Promise.reject(e);
     }
 
 
-    const gatt: BluetoothRemoteGATTServer = connection.get("peripheral") as BluetoothRemoteGATTServer;
+
+  }
+
+  async readDescriptor(options: BluetoothGATTDescriptorReadOptions ):Promise<BluetoothGATTDescriptorReadResult>{
+
+    if(!options){
+      return Promise.reject(new OptionsRequiredError());
+    }
+
+    const {id, service, characteristic, descriptor} = options;
+
+    this.checkArgs({id, service, characteristic, descriptor});
+
+    try {
+      const connection = this.getConnection(id);
+      const gatt: BluetoothRemoteGATTServer = connection.get("peripheral");
+      const gattService: BluetoothRemoteGATTService = await gatt.getPrimaryService(service);
+      const gattCharacteristic: BluetoothRemoteGATTCharacteristic = await gattService.getCharacteristic(characteristic);
+      const gattDescriptor: BluetoothRemoteGATTDescriptor = await gattCharacteristic.getDescriptor(descriptor);
+
+      const value = await gattDescriptor.readValue();
+
+      return {
+        value: [...(new Uint8Array(value.buffer))]
+      }
+    }catch (e) {
+      return Promise.reject(e);
+    }
+
+
+  }
+
+  async writeDescriptor(options: BluetoothGATTDescriptorWriteOptions): Promise<BluetoothGATTDescriptorWriteResult>{
+
+    if(!options){
+      return Promise.reject(new OptionsRequiredError());
+    }
+
+    const {id, service, characteristic, descriptor, value} = options;
+    this.checkArgs({id, service, characteristic, descriptor, value});
 
     try {
 
-      await gatt.disconnect()
-      this.connections.delete(id);
-      return {disconnected: true};
+      const connection = this.getConnection(id);
+      const gatt: BluetoothRemoteGATTServer = connection.get("peripheral");
+      const gattService: BluetoothRemoteGATTService = await gatt.getPrimaryService(service);
+      const gattCharacteristic: BluetoothRemoteGATTCharacteristic = await gattService.getCharacteristic(characteristic);
+      const gattDescriptor: BluetoothRemoteGATTDescriptor = await gattCharacteristic.getDescriptor(descriptor);
 
+      const encoder = new TextEncoder();
+      const toWrite = encoder.encode(value);
+
+      await gattDescriptor.writeValue(toWrite);
+
+      return {
+        value: [...(new Uint8Array(toWrite.buffer))]
+      }
+
+    }catch (e) {
+      return Promise.reject(e);
+    }
+
+
+
+  }
+
+  async enableNotifications( options: BluetoothGATTNotificationOptions ): Promise<BluetoothGATTEnableNotificationsResult>{
+
+    if(!options){
+      return Promise.reject(new OptionsRequiredError());
+    }
+
+    const {id, service, characteristic} = options;
+    this.checkArgs({id, service, characteristic});
+
+    try{
+      const connection = this.getConnection(id);
+      const gatt: BluetoothRemoteGATTServer = connection.get("peripheral");
+      const gattService: BluetoothRemoteGATTService = await gatt.getPrimaryService(service);
+      let gattCharacterisic: BluetoothRemoteGATTCharacteristic = await gattService.getCharacteristic(characteristic);
+
+      gattCharacterisic = await gattCharacterisic.startNotifications();
+
+      gattCharacterisic.addEventListener("characteristicvaluechanged", (ev) => {
+
+        const char: BluetoothRemoteGATTCharacteristic = (ev.target) as BluetoothRemoteGATTCharacteristic;
+        const serv: BluetoothRemoteGATTService = char.service;
+        const dev: BluetoothDevice = serv.device;
+        const value = [...(new Uint8Array(char.value.buffer))];
+
+        const meta = {
+          id: dev.id,
+          service: get16BitUUID(serv.uuid),
+          characteristic: get16BitUUID(char.uuid)
+        };
+
+        this.notifyListeners(get16BitUUID(char.uuid).toString(), {...meta, value});
+      });
+
+
+
+      return {enabled: true};
+    }catch (e) {
+      return Promise.reject(e);
+    }
+  }
+
+  async disableNotifications(options: BluetoothGATTNotificationOptions): Promise<BluetoothGATTDisableNotificationsResult>{
+
+    if(!options){
+      return Promise.reject(new OptionsRequiredError());
+    }
+
+    const {id, service, characteristic} = options;
+    this.checkArgs({id, service, characteristic});
+
+    try {
+      const connection = this.getConnection(id);
+      const gatt: BluetoothRemoteGATTServer = connection.get("peripheral");
+      const gattService: BluetoothRemoteGATTService = await gatt.getPrimaryService(service);
+      const gattCharacteristic: BluetoothRemoteGATTCharacteristic = await gattService.getCharacteristic(characteristic);
+      await gattCharacteristic.stopNotifications();
+      return {disabled: true};
     } catch (e) {
       return Promise.reject(e);
     }
 
   }
 
-  async discover(options: BluetoothGATTServiceDiscoveryOptions): Promise<any>{
-    console.warn("Method not available in browser", options);
-    return;
-  }
-
-  async read(options:BluetoothGATTCharacteristicReadOptions): Promise<BluetoothGATTCharacteristicReadResult>{
-    const {id, service, characteristic} = options;
-    this.checkArgs({id, service, characteristic});
-
-    const connection: Map<string, any> = this.connections.get(id);
-
-    if(!connection){
-      return;
-    }
-
-    const gatt: BluetoothRemoteGATTServer = connection.get("peripheral") as BluetoothRemoteGATTServer;
-
-    const gattService: BluetoothRemoteGATTService = await gatt.getPrimaryService(service);
-
-    if(!gattService){
-      return;
-    }
-
-    const gattCharacteristic: BluetoothRemoteGATTCharacteristic = await gattService.getCharacteristic(characteristic);
-
-    if(!gattCharacteristic){
-      return;
-    }
-
-    const dataView = await gattCharacteristic.readValue();
-
-    const value = [...new Uint8Array(dataView.buffer)];
-
-    return {value};
-  }
-
-  async write(options: BluetoothGATTCharacteristicWriteOptions): Promise<BluetoothGATTCharacteristicWriteResult>{
-
-    const {id, service, characteristic, value} = options;
-    this.checkArgs({id, service, characteristic, value});
-
-    const connection = this.getConnection(id);
-
-    if(!connection){
-      return;
-    }
-
-    const gatt: BluetoothRemoteGATTServer = connection.get("peripheral");
-
-    const gattService: BluetoothRemoteGATTService = await gatt.getPrimaryService(service);
-
-    if(!service){
-      return;
-    }
-
-    const gattCharacteristic: BluetoothRemoteGATTCharacteristic = await gattService.getCharacteristic(characteristic);
-
-    if(!characteristic){
-      return;
-    }
-
-    const encoder = new TextEncoder();
-    const toWrite = encoder.encode(value);
-
-    await gattCharacteristic.writeValue(toWrite)
-
-    return {
-      value: [...(new Uint8Array(toWrite.buffer))]
-    }
-
-  }
-
-  async readDescriptor(options: BluetoothGATTDescriptorReadOptions ):Promise<BluetoothGATTDescriptorReadResult>{
-
-    const {id, service, characteristic, descriptor} = options;
-
-    this.checkArgs({id, service, characteristic, descriptor});
-
-    const connection = this.getConnection(id);
-
-    if(!connection){
-      return;
-    }
-
-    const gatt: BluetoothRemoteGATTServer = connection.get("peripheral");
-
-    const gattService: BluetoothRemoteGATTService = await gatt.getPrimaryService(service);
-
-    if(!gattService){
-      return;
-    }
-
-    const gattCharacteristic: BluetoothRemoteGATTCharacteristic = await gattService.getCharacteristic(characteristic);
-
-    if(!gattCharacteristic){
-      return;
-    }
-
-    const gattDescriptor: BluetoothRemoteGATTDescriptor = await gattCharacteristic.getDescriptor(descriptor);
-
-    if(!gattDescriptor){
-      return;
-    }
-
-    const value = await gattDescriptor.readValue();
-
-    return {
-      value: [...(new Uint8Array(value.buffer))]
-    }
-
-  }
-
-  async writeDescriptor(options: BluetoothGATTDescriptorWriteOptions): Promise<BluetoothGATTDescriptorWriteResult>{
-    const {id, service, characteristic, descriptor, value} = options;
-    this.checkArgs({id, service, characteristic, descriptor, value});
-
-    const connection = this.getConnection(id);
-
-    if(!connection){
-      return;
-    }
-
-    const gatt: BluetoothRemoteGATTServer = connection.get("peripheral");
-
-    const gattService: BluetoothRemoteGATTService = await gatt.getPrimaryService(service);
-
-    if(!service){
-      return;
-    }
-
-    const gattCharacteristic: BluetoothRemoteGATTCharacteristic = await gattService.getCharacteristic(characteristic);
-
-    if(!characteristic){
-      return;
-    }
-
-    const gattDescriptor: BluetoothRemoteGATTDescriptor = await gattCharacteristic.getDescriptor(descriptor);
-
-    if(!descriptor){
-      return;
-    }
-
-    const encoder = new TextEncoder();
-    const toWrite = encoder.encode(value);
-
-    await gattDescriptor.writeValue(toWrite);
-
-    return {
-      value: [...(new Uint8Array(toWrite.buffer))]
-    }
-
-  }
-
-  async enableNotifications( options: BluetoothGATTNotificationOptions ): Promise<any>{
-
-    const {id, service, characteristic} = options;
-    this.checkArgs({id, service, characteristic});
-
-    const connection = this.getConnection(id);
-
-    if(!connection){
-      return;
-    }
-
-    const gatt: BluetoothRemoteGATTServer = connection.get("peripheral");
-
-    const gattService: BluetoothRemoteGATTService = await gatt.getPrimaryService(service);
-
-    if(!gattService){
-      return;
-    }
-
-    const gattCharacterisic: BluetoothRemoteGATTCharacteristic = await gattService.getCharacteristic(characteristic);
-
-
-
-    if(!gattCharacterisic){
-      return;
-    }
-
-    try {
-      await gattCharacterisic.startNotifications();
-    }catch (e) {
-      console.error("Unable to enable noifications", e)
-      return Promise.reject();
-    }
-
-    gattCharacterisic.addEventListener("characteristicvaluechanged", (ev) => {
-
-      const char: BluetoothRemoteGATTCharacteristic = (ev.target) as BluetoothRemoteGATTCharacteristic;
-      const serv: BluetoothRemoteGATTService = char.service;
-      const dev: BluetoothDevice = serv.device;
-      const value = [...(new Uint8Array(char.value.buffer))];
-
-      const meta = {
-        id: dev.id,
-        service: get16BitUUID(serv.uuid),
-        characteristic: get16BitUUID(char.uuid)
-      };
-
-      this.notifyListeners(get16BitUUID(char.uuid).toString(), {...meta, value});
-    });
-
-
-
-    return;
-  }
-
-  async disableNotifications(options: BluetoothGATTNotificationOptions): Promise<any>{
-    const {id, service, characteristic} = options;
-    this.checkArgs({id, service, characteristic});
-
-    const connection = this.getConnection(id);
-
-    if(!connection){
-      return;
-    }
-
-    const gatt: BluetoothRemoteGATTServer = connection.get("peripheral");
-
-    const gattService: BluetoothRemoteGATTService = await gatt.getPrimaryService(service);
-
-    if(!gattService){
-      return;
-    }
-
-    const gattCharacterisic: BluetoothRemoteGATTCharacteristic = await gattService.getCharacteristic(characteristic);
-
-
-
-    if(!gattCharacterisic){
-      return;
-    }
-
-    try {
-      await gattCharacterisic.stopNotifications();
-    }catch (e) {
-      console.error("Unable to disableenable noifications", e);
-      return Promise.reject();
-    }
-
-    return;
-  }
-
   async getServices(options: GetServiceOptions): Promise<GetServiceResult>{
+
+    if(!options){
+      return Promise.reject(new OptionsRequiredError());
+    }
 
     const {id} = options;
     this.checkArgs({id});
 
-    const connection = this.getConnection(id);
+    try {
+      const connection = this.getConnection(id);
+      const gatt: BluetoothRemoteGATTServer = connection.get("peripheral");
+      const gattServices: BluetoothRemoteGATTService[] = await gatt.getPrimaryServices();
 
-    if(!connection){
-      return;
+      const services = await Promise.all(gattServices.map(async (service: BluetoothRemoteGATTService) => {
+
+        const characteristics = await this.getIncludedCharacteristicUuids(service);
+
+        return {
+          uuid: get16BitUUID(service.uuid),
+          isPrimary: service.isPrimary,
+          characteristics
+        };
+
+      }));
+
+      return {services};
+    }catch (e) {
+      return Promise.reject(e);
     }
-
-    const gatt: BluetoothRemoteGATTServer = connection.get("peripheral");
-    const gattServices: BluetoothRemoteGATTService[] = await gatt.getPrimaryServices();
-
-    const services = await Promise.all(gattServices.map(async (service: BluetoothRemoteGATTService) => {
-
-      const characteristics = await this.getIncludedCharacteristicUuids(service);
-
-      return {
-        uuid: get16BitUUID(service.uuid),
-        isPrimary: service.isPrimary,
-        characteristics
-      };
-
-    }));
-
-    return {services};
   }
 
   async getService(options: GetServiceOptions): Promise<GetServiceResult>{
 
+    if(!options){
+      return Promise.reject(new OptionsRequiredError());
+    }
+
     const {id, service} = options;
     this.checkArgs({id, service});
 
-    const connection = this.getConnection(id);
+    try {
+      const connection = this.getConnection(id);
+      const gatt: BluetoothRemoteGATTServer = connection.get("peripheral");
+      const gattService = await gatt.getPrimaryService(service);
+      const characteristics = await this.getIncludedCharacteristicUuids(gattService);
 
-    if(!connection){
-      return;
+      const {uuid, isPrimary} = gattService;
+
+      return {
+        uuid: get16BitUUID(uuid),
+        isPrimary,
+        characteristics
+      }
+    } catch (e) {
+      return Promise.reject(e);
     }
 
-    const gatt: BluetoothRemoteGATTServer = connection.get("peripheral");
 
-    const gattService = await gatt.getPrimaryService(service);
-
-    if(!gattService){
-      return;
-    }
-
-    const characteristics = await this.getIncludedCharacteristicUuids(gattService);
-
-    const {uuid, isPrimary} = gattService;
-
-    return {
-      uuid: get16BitUUID(uuid),
-      isPrimary,
-      characteristics
-    }
 
   }
 
   async getCharacteristics(options: GetCharacteristicOptions): Promise<GetCharacteristicResult>{
 
+    if(!options){
+      return Promise.reject(new OptionsRequiredError());
+    }
+
     const {id, service} = options;
 
     this.checkArgs({id, service});
 
-    const connection = this.getConnection(id);
+    try {
+      const connection = this.getConnection(id);
+      const gatt: BluetoothRemoteGATTServer = connection.get("peripheral");
+      const gattService = await gatt.getPrimaryService(service);
+      const includedCharacteristics = await gattService.getCharacteristics();
 
-    if(!connection){
-      return;
+      const characteristics = await Promise.all(includedCharacteristics.map(async (characteristic) => {
+
+        const {uuid} = characteristic;
+
+        const descriptors = await this.getIncludedDescriptorUuids(characteristic);
+        const properties = this.getCharacteristicProperties(characteristic);
+
+        return {
+          uuid: get16BitUUID(uuid),
+          properties,
+          descriptors
+        }
+
+      }));
+
+      return {characteristics};
+
+    }catch (e) {
+      return Promise.reject(e);
     }
-
-    const gatt: BluetoothRemoteGATTServer = connection.get("peripheral");
-
-    const gattService = await gatt.getPrimaryService(service);
-
-    if(!gattService){
-      return;
-    }
-
-    const includedCharacteristics = await gattService.getCharacteristics();
-
-    const characteristics = await Promise.all(includedCharacteristics.map(async (characteristic) => {
-
-      const {uuid} = characteristic;
-
-      const descriptors = await this.getIncludedDescriptorUuids(characteristic);
-      const properties = this.getCharacteristicProperties(characteristic);
-
-      return {
-        uuid: get16BitUUID(uuid),
-        properties,
-        descriptors
-      }
-
-    }));
-
-    return {characteristics};
-
   }
 
   async getCharacteristic(options: GetCharacteristicOptions): Promise<GetCharacteristicResult>{
+
+    if(!options){
+      return Promise.reject(new OptionsRequiredError());
+    }
 
     const {id, service, characteristic} = options;
 
     this.checkArgs({id, service, characteristic});
 
-    const connection = this.getConnection(id);
 
-    if(!connection){
-      return;
+    try {
+      const connection = this.getConnection(id);
+      const gatt: BluetoothRemoteGATTServer = connection.get("peripheral");
+      const gattService = await gatt.getPrimaryService(service);
+      const gattCharacteristic = await gattService.getCharacteristic(characteristic);
+      const descriptors = await this.getIncludedDescriptorUuids(gattCharacteristic);
+      const properties = this.getCharacteristicProperties(gattCharacteristic);
+      const uuid = get16BitUUID(gattCharacteristic.uuid);
+
+      return {
+        uuid,
+        properties,
+        descriptors
+      }
+
+    } catch (e) {
+      return Promise.reject(e);
     }
-
-    const gatt: BluetoothRemoteGATTServer = connection.get("peripheral");
-
-    const gattService = await gatt.getPrimaryService(service);
-
-    if(!gattService){
-      return;
-    }
-
-    const gattCharacterisic = await gattService.getCharacteristic(characteristic);
-
-    if(!gattCharacterisic){
-      return;
-    }
-
-    const descriptors = await this.getIncludedDescriptorUuids(gattCharacterisic);
-    const properties = this.getCharacteristicProperties(gattCharacterisic);
-    const uuid = get16BitUUID(gattCharacterisic.uuid);
-
-    return {
-      uuid,
-      properties,
-      descriptors
-    }
-
   }
 
   private checkArgs(args: {[key: string]: any}): void{
@@ -518,7 +482,14 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
   }
 
   private getConnection(id: string): Map<string, any> {
-    return this.connections.get(id);
+
+    const connection = this.connections.get(id);
+
+    if(!connection){
+      throw new NotConnectedError();
+    }
+
+    return connection;
   }
 
   private getCharacteristicProperties(characteristic: BluetoothRemoteGATTCharacteristic): GATTCharacteristicProperties {
@@ -542,7 +513,7 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
     try {
       characteristics = await service.getCharacteristics();
     }catch (e) {
-      console.log(e);
+      return Promise.reject(e);
     }
 
     return characteristics.map((characteristic) => get16BitUUID(characteristic.uuid));
@@ -570,6 +541,4 @@ const BluetoothLEClient = new BluetoothLEClientWeb();
 export { BluetoothLEClient };
 
 import { registerWebPlugin } from '@capacitor/core';
-import {get16BitUUID} from "./utils/utils";
-import {BluetoothGattCharacteristics} from "./utils/ble-gatt-characteristics.enum";
 registerWebPlugin(BluetoothLEClient);
