@@ -112,7 +112,6 @@ export class BluetoothLEClientWeb extends WebPlugin {
     }
     discover(options) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(options);
             return { discovered: true };
         });
     }

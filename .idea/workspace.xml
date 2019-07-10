@@ -2,30 +2,54 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf9d3911-2a91-45cc-8732-9bb291ec03ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/utils/transformers/battery-level.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/transformers/blood-pressure-feature.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/transformers/blood-pressure-measurement.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/transformers/body-composition-feature.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/transformers/body-composition-measurement.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/transformers/body-sensor-location.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/transformers/current-time.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/transformers/glucose-feature.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/transformers/glucose-measurement-context.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/transformers/glucose-measurement.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/transformers/heart-rate-measurement.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/transformers/plx-continuous-measurement.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/transformers/plx-features.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/transformers/plx-spot-check-measurement.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/transformers/temperature-measurement.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/transformers/temperature-type.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/transformers/weight-measurement.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/transformers/weight-scale-feature.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android/android.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/compile_library_classes/debug/classes.jar" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/compile_library_classes/debug/classes.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/bleclient/plugin/BluetoothLEClient$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/bleclient/plugin/BluetoothLEClient$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/bleclient/plugin/BluetoothLEClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/bleclient/plugin/BluetoothLEClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/javac/release/compileReleaseJavaWithJavac/classes/com/bleclient/plugin/BluetoothLEClient$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/javac/release/compileReleaseJavaWithJavac/classes/com/bleclient/plugin/BluetoothLEClient$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/javac/release/compileReleaseJavaWithJavac/classes/com/bleclient/plugin/BluetoothLEClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/javac/release/compileReleaseJavaWithJavac/classes/com/bleclient/plugin/BluetoothLEClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/packaged-classes/debug/classes.jar" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/packaged-classes/debug/classes.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/packaged-classes/release/classes.jar" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/packaged-classes/release/classes.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/runtime_library_classes/debug/classes.jar" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/runtime_library_classes/debug/classes.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/outputs/aar/cap-bluetooth-low-energy-client-debug.aar" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/outputs/aar/cap-bluetooth-low-energy-client-debug.aar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/outputs/aar/cap-bluetooth-low-energy-client-release.aar" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/outputs/aar/cap-bluetooth-low-energy-client-release.aar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/cap-bluetooth-low-energy-client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android/cap-bluetooth-low-energy-client.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/src/main/java/com/bleclient/plugin/BluetoothLEClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/bleclient/plugin/BluetoothLEClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/esm/definitions.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/definitions.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/esm/utils/ble-gatt-notification-callbacks.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/ble-gatt-notification-callbacks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/esm/utils/ble-gatt-notification-callbacks.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/ble-gatt-notification-callbacks.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/esm/utils/transformers/blood-pressure-measurement.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/transformers/blood-pressure-measurement.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/esm/utils/transformers/blood-pressure-measurement.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/transformers/blood-pressure-measurement.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/esm/utils/transformers/blood-pressure-measurement.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/transformers/blood-pressure-measurement.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/esm/utils/transformers/body-composition-measurement.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/transformers/body-composition-measurement.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/esm/utils/transformers/body-composition-measurement.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/transformers/body-composition-measurement.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/esm/utils/transformers/body-sensor-location.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/transformers/body-sensor-location.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/esm/utils/transformers/body-sensor-location.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/transformers/body-sensor-location.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/esm/utils/transformers/body-sensor-location.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/transformers/body-sensor-location.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/esm/utils/transformers/glucose-measurement-context.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/transformers/glucose-measurement-context.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/esm/utils/transformers/glucose-measurement-context.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/transformers/glucose-measurement-context.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/esm/utils/transformers/glucose-measurement-context.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/transformers/glucose-measurement-context.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/esm/utils/transformers/glucose-measurement.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/transformers/glucose-measurement.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/esm/utils/transformers/glucose-measurement.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/transformers/glucose-measurement.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/esm/utils/transformers/glucose-measurement.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/transformers/glucose-measurement.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/esm/utils/utils.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/utils.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/esm/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/esm/utils/utils.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/utils.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/definitions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/definitions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/ble-gatt-notification-callbacks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/ble-gatt-notification-callbacks.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/errors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/errors.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/transformers/blood-pressure-measurement.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/transformers/blood-pressure-measurement.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/transformers/body-composition-measurement.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/transformers/body-composition-measurement.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/transformers/body-sensor-location.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/transformers/body-sensor-location.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/transformers/glucose-measurement-context.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/transformers/glucose-measurement-context.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/transformers/glucose-measurement.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/transformers/glucose-measurement.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/utils.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/web.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/web.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -38,35 +62,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/web.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="152" column="110" selection-start-line="152" selection-start-column="110" selection-end-line="152" selection-end-column="110" />
+              <folding>
+                <element signature="e#0#44#0" expanded="true" />
+                <element signature="n#!!block;n#isAvailable#0;n#BluetoothLEClientWeb#0" />
+                <element signature="n#!!block;n#isEnabled#0;n#BluetoothLEClientWeb#0" />
+                <element signature="n#!!block;n#enable#0;n#BluetoothLEClientWeb#0" />
+                <element signature="n#!!block;n#scan#0;n#BluetoothLEClientWeb#0" />
+                <element signature="n#!!block;n#connect#0;n#BluetoothLEClientWeb#0" />
+                <element signature="n#!!block;n#disconnect#0;n#BluetoothLEClientWeb#0" />
+                <element signature="n#!!block;n#write#0;n#BluetoothLEClientWeb#0" />
+                <element signature="n#!!block;n#readDescriptor#0;n#BluetoothLEClientWeb#0" />
+                <element signature="n#!!block;n#writeDescriptor#0;n#BluetoothLEClientWeb#0" />
+                <element signature="n#!!block;n#disableNotifications#0;n#BluetoothLEClientWeb#0" />
+                <element signature="n#!!block;n#getServices#0;n#BluetoothLEClientWeb#0" />
+                <element signature="n#!!block;n#getCharacteristics#0;n#BluetoothLEClientWeb#0" />
+                <element signature="n#!!block;n#getCharacteristic#0;n#BluetoothLEClientWeb#0" />
+                <element signature="n#!!block;n#getCharacteristicProperties#0;n#BluetoothLEClientWeb#0" />
+                <element signature="n#!!block;n#getIncludedCharacteristicUuids#0;n#BluetoothLEClientWeb#0" />
+                <element signature="n#!!block;n#getIncludedDescriptorUuids#0;n#BluetoothLEClientWeb#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/utils/ble-gatt-notification-callbacks.ts">
+        <entry file="file://$PROJECT_DIR$/tsconfig.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="32" column="74" selection-start-line="32" selection-start-column="74" selection-end-line="32" selection-end-column="74" />
-              <folding>
-                <element signature="e#0#77#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/transformers/glucose-feature.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
-              <folding>
-                <element signature="e#0#79#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/transformers/current-time.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="52" selection-start-column="52" selection-end-column="52" />
+            <state relative-caret-position="221">
+              <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -74,11 +102,86 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utils/transformers/glucose-measurement-context.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1717">
-              <caret line="101" column="19" selection-start-line="101" selection-start-column="19" selection-end-line="101" selection-end-column="19" />
+            <state relative-caret-position="311">
+              <caret line="148" column="25" selection-start-line="148" selection-start-column="25" selection-end-line="148" selection-end-column="25" />
               <folding>
                 <element signature="e#0#79#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/transformers/plx-continuous-measurement.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1020">
+              <caret column="52" selection-start-column="52" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/transformers/temperature-measurement.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+              <folding>
+                <element signature="e#0#79#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/transformers/temperature-type.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+              <folding>
+                <element signature="e#0#79#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/definitions.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2533">
+              <caret line="25" column="104" selection-start-line="25" selection-start-column="104" selection-end-line="25" selection-end-column="104" />
+              <folding>
+                <element signature="e#0#83#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/transformers/glucose-measurement.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="104" column="4" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#79#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/utils.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="311">
+              <caret line="49" column="42" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/transformers/heart-rate-measurement.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="429">
+              <caret line="49" column="52" selection-start-line="49" selection-start-column="52" selection-end-line="49" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -103,30 +206,34 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/utils/errors.ts" />
-        <option value="$PROJECT_DIR$/tsconfig.json" />
         <option value="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/src/web.ts" />
-        <option value="$PROJECT_DIR$/src/utils/utils.ts" />
-        <option value="$PROJECT_DIR$/src/definitions.ts" />
         <option value="$PROJECT_DIR$/src/utils/transformers/battery-level.ts" />
         <option value="$PROJECT_DIR$/src/utils/transformers/blood-pressure-feature.ts" />
-        <option value="$PROJECT_DIR$/src/utils/transformers/blood-pressure-measurement.ts" />
         <option value="$PROJECT_DIR$/src/utils/transformers/body-composition-feature.ts" />
-        <option value="$PROJECT_DIR$/src/utils/transformers/body-composition-measurement.ts" />
-        <option value="$PROJECT_DIR$/src/utils/transformers/body-sensor-location.ts" />
         <option value="$PROJECT_DIR$/src/utils/transformers/current-time.ts" />
         <option value="$PROJECT_DIR$/src/utils/transformers/plx-continuous-measurement.ts" />
         <option value="$PROJECT_DIR$/src/utils/transformers/plx-features.ts" />
         <option value="$PROJECT_DIR$/src/utils/transformers/plx-spot-check-measurement.ts" />
         <option value="$PROJECT_DIR$/src/utils/transformers/heart-rate-measurement.ts" />
-        <option value="$PROJECT_DIR$/src/utils/transformers/glucose-measurement.ts" />
-        <option value="$PROJECT_DIR$/src/utils/transformers/glucose-measurement-context.ts" />
         <option value="$PROJECT_DIR$/src/utils/transformers/glucose-feature.ts" />
+        <option value="$PROJECT_DIR$/src/utils/transformers/weight-scale-feature.ts" />
         <option value="$PROJECT_DIR$/src/utils/ble-gatt-notification-callbacks.ts" />
+        <option value="$PROJECT_DIR$/src/utils/transformers/body-composition-measurement.ts" />
+        <option value="$PROJECT_DIR$/src/utils/transformers/weight-measurement.ts" />
+        <option value="$PROJECT_DIR$/src/utils/transformers/blood-pressure-measurement.ts" />
+        <option value="$PROJECT_DIR$/src/utils/transformers/glucose-measurement-context.ts" />
+        <option value="$PROJECT_DIR$/src/utils/transformers/temperature-type.ts" />
+        <option value="$PROJECT_DIR$/src/utils/transformers/body-sensor-location.ts" />
+        <option value="$PROJECT_DIR$/src/utils/transformers/glucose-measurement.ts" />
+        <option value="$PROJECT_DIR$/src/utils/utils.ts" />
+        <option value="$PROJECT_DIR$/src/utils/transformers/temperature-measurement.ts" />
+        <option value="$PROJECT_DIR$/src/definitions.ts" />
+        <option value="$PROJECT_DIR$/src/web.ts" />
+        <option value="$PROJECT_DIR$/tsconfig.json" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1590" />
     <option name="width" value="1622" />
     <option name="height" value="1732" />
@@ -143,6 +250,11 @@
             <path>
               <item name="cap-bluetooth-low-energy-client" type="b2602c69:ProjectViewProjectNode" />
               <item name="cap-bluetooth-low-energy-client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cap-bluetooth-low-energy-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cap-bluetooth-low-energy-client" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cap-bluetooth-low-energy-client" type="b2602c69:ProjectViewProjectNode" />
@@ -171,7 +283,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../capacitor/site" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ble-dummy-generator" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="ts.external.directory.path" value="C:\git\cap-bluetooth-low-energy-client\node_modules\typescript\lib" />
@@ -217,18 +329,22 @@
       <workItem from="1562066918153" duration="6400000" />
       <workItem from="1562140148991" duration="8935000" />
       <workItem from="1562193279399" duration="1637000" />
-      <workItem from="1562229339749" duration="19274000" />
+      <workItem from="1562229339749" duration="19546000" />
+      <workItem from="1562570027951" duration="11160000" />
+      <workItem from="1562670874161" duration="4331000" />
+      <workItem from="1562686012495" duration="52000" />
+      <workItem from="1562749016311" duration="9421000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77441000" />
+    <option name="totallyTimeSpent" value="102677000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="795" y="0" width="811" height="866" extended-state="0" />
+    <frame x="-6" y="-6" width="1613" height="873" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16129032" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1521877" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -243,7 +359,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.33288044" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32974428" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -257,13 +373,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21387">
           <caret line="1393" column="9" selection-start-line="1393" selection-start-column="9" selection-end-line="1393" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tsconfig.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -294,13 +403,6 @@
           <folding>
             <element signature="e#0#44#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@capacitor/core/dist/esm/web/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -340,18 +442,208 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/transformers/blood-pressure-feature.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="52" selection-start-column="52" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/transformers/plx-features.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="52" selection-start-column="52" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/transformers/battery-level.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="52" selection-start-column="52" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/ble-gatt-notification-callbacks.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="41" column="80" selection-start-line="41" selection-start-column="80" selection-end-line="41" selection-end-column="80" />
+          <folding>
+            <element signature="e#0#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@capacitor/core/dist/esm/web/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-152">
+          <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/transformers/weight-scale-feature.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="14" column="73" selection-start-line="14" selection-start-column="73" selection-end-line="14" selection-end-column="73" />
+          <folding>
+            <element signature="e#0#79#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/transformers/current-time.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-33">
+          <caret column="52" selection-start-column="52" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/transformers/glucose-feature.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#79#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/transformers/plx-spot-check-measurement.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="47" column="50" selection-start-line="26" selection-start-column="8" selection-end-line="47" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#79#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/transformers/weight-measurement.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#79#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/transformers/blood-pressure-measurement.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="98" column="27" selection-start-line="98" selection-start-column="27" selection-end-line="98" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/transformers/body-composition-feature.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="52" selection-start-column="52" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/transformers/body-composition-measurement.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="129" column="32" selection-start-line="129" selection-start-column="32" selection-end-line="129" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#79#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/transformers/body-sensor-location.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#79#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/transformers/glucose-measurement.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="104" column="4" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#79#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/transformers/heart-rate-measurement.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="49" column="52" selection-start-line="49" selection-start-column="52" selection-end-line="49" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/utils.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="49" column="42" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/transformers/temperature-measurement.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#79#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/transformers/temperature-type.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#79#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/transformers/plx-continuous-measurement.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1020">
+          <caret column="52" selection-start-column="52" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/transformers/glucose-measurement-context.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="148" column="25" selection-start-line="148" selection-start-column="25" selection-end-line="148" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#79#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/definitions.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2533">
+          <caret line="25" column="104" selection-start-line="25" selection-start-column="104" selection-end-line="25" selection-end-column="104" />
+          <folding>
+            <element signature="e#0#83#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/web.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="34" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
+        <state relative-caret-position="294">
+          <caret line="152" column="110" selection-start-line="152" selection-start-column="110" selection-end-line="152" selection-end-column="110" />
           <folding>
+            <element signature="e#0#44#0" expanded="true" />
             <element signature="n#!!block;n#isAvailable#0;n#BluetoothLEClientWeb#0" />
             <element signature="n#!!block;n#isEnabled#0;n#BluetoothLEClientWeb#0" />
             <element signature="n#!!block;n#enable#0;n#BluetoothLEClientWeb#0" />
             <element signature="n#!!block;n#scan#0;n#BluetoothLEClientWeb#0" />
             <element signature="n#!!block;n#connect#0;n#BluetoothLEClientWeb#0" />
             <element signature="n#!!block;n#disconnect#0;n#BluetoothLEClientWeb#0" />
-            <element signature="n#!!block;n#discover#0;n#BluetoothLEClientWeb#0" />
             <element signature="n#!!block;n#write#0;n#BluetoothLEClientWeb#0" />
             <element signature="n#!!block;n#readDescriptor#0;n#BluetoothLEClientWeb#0" />
             <element signature="n#!!block;n#writeDescriptor#0;n#BluetoothLEClientWeb#0" />
@@ -366,140 +658,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/utils.ts">
+    <entry file="file://$PROJECT_DIR$/tsconfig.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="49" column="2" selection-start-line="49" selection-start-column="2" selection-end-line="49" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/definitions.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="607">
-          <caret line="184" column="87" selection-start-line="184" selection-start-column="87" selection-end-line="184" selection-end-column="87" />
-          <folding>
-            <element signature="e#0#83#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/transformers/blood-pressure-feature.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="52" selection-start-column="52" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/transformers/body-composition-feature.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="52" selection-start-column="52" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/transformers/body-composition-measurement.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="52" selection-start-column="52" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/transformers/body-sensor-location.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="52" selection-start-column="52" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/transformers/plx-continuous-measurement.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="52" selection-start-column="52" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/transformers/plx-features.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="52" selection-start-column="52" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/transformers/plx-spot-check-measurement.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="52" selection-start-column="52" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/transformers/battery-level.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="52" selection-start-column="52" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/transformers/heart-rate-measurement.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="49" column="52" selection-start-line="49" selection-start-column="52" selection-end-line="49" selection-end-column="52" />
-          <folding>
-            <element signature="e#1#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/transformers/glucose-measurement.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="90" column="62" selection-start-line="90" selection-start-column="62" selection-end-line="90" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#79#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/transformers/blood-pressure-measurement.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="52" column="50" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="52" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/transformers/current-time.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="52" selection-start-column="52" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/transformers/glucose-measurement-context.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1717">
-          <caret line="101" column="19" selection-start-line="101" selection-start-column="19" selection-end-line="101" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#79#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/transformers/glucose-feature.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#79#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/ble-gatt-notification-callbacks.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="32" column="74" selection-start-line="32" selection-start-column="74" selection-end-line="32" selection-end-column="74" />
-          <folding>
-            <element signature="e#0#77#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="221">
+          <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
         </state>
       </provider>
     </entry>

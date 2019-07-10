@@ -1,13 +1,17 @@
 import {BluetoothGattCharacteristics} from "./utils/ble-gatt-characteristics.enum";
 import {BluetoothGattServices} from "./utils/ble-gatt-services.enum";
+import {WebPlugin} from "@capacitor/core";
 
-declare module "@capacitor/core" {
+
+
+declare module "@capacitor/core/dist/esm/core-plugin-definitions" {
+
   interface PluginRegistry {
     BluetoothLEClient: BluetoothLEClientPlugin;
   }
 }
 
-export interface BluetoothLEClientPlugin {
+export interface BluetoothLEClientPlugin extends WebPlugin{
 
   isAvailable(): Promise<BluetoothGATTAvailabilityResult>;
 
@@ -18,6 +22,8 @@ export interface BluetoothLEClientPlugin {
   scan(options: BluetoothGATTScanOptions): Promise<BluetoothGATTScanResults>;
 
   connect(options: BluetoothGATTConnectOptions): Promise<BluetoothGATTConnectResult>;
+
+  discover(options: BluetoothGATTServiceDiscoveryOptions): Promise<BluetoothGATTServiceDiscoveryResult>;
 
   disconnect(options: BluetoothGATTDisconnectOptions): Promise<BluetoothGATTDisconnectResult>
 
@@ -36,6 +42,10 @@ export interface BluetoothLEClientPlugin {
   getCharacteristics(options: GetCharacteristicOptions): Promise<GetCharacteristicResult>;
 
   getCharacteristic(options: GetCharacteristicOptions): Promise<GetCharacteristicResult>;
+
+  enableNotifications(options: BluetoothGATTNotificationOptions): Promise<BluetoothGATTEnableNotificationsResult>;
+
+  disableNotifications(options: BluetoothGATTNotificationOptions): Promise<BluetoothGATTDisableNotificationsResult>;
 
 }
 

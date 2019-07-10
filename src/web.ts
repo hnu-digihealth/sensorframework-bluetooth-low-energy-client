@@ -151,8 +151,6 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
   }
 
   async discover(options: BluetoothGATTServiceDiscoveryOptions): Promise<BluetoothGATTServiceDiscoveryResult>{
-
-    console.log(options)
     return {discovered: true};
   }
 

@@ -192,7 +192,7 @@ public class BluetoothLEClient extends Plugin {
                         call.resolve(ret);
 
                         connection.remove(keyOperationDisconnect);
-
+                        connections.remove(address);
                         break;
                     }
                 }
@@ -496,7 +496,6 @@ public class BluetoothLEClient extends Plugin {
         bluetoothAdapter = bluetoothManager.getAdapter();
 
         if (bluetoothAdapter == null || !bluetoothAdapter.isEnabled()) {
-            Log.i(getLogTag(), "Went into case");
             Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(call, enableIntent, REQUEST_ENABLE_BT);
         }
@@ -544,6 +543,23 @@ public class BluetoothLEClient extends Plugin {
             return;
         }
 
+        HashMap<String, Object> connection = (HashMap<String, Object>) connections.get(address);
+
+        if(connection != null){
+
+            boolean isAlreadyConnected = (Integer) connection.get(keyConnectionState) == BluetoothProfile.STATE_CONNECTED;
+            boolean servicesDiscovered = (Integer) connection.get(keyDiscovered) == SERVICES_DISCOVERED;
+
+            if(isAlreadyConnected && servicesDiscovered ){
+                JSObject ret = new JSObject();
+                addProperty(ret, keyConnected, true);
+                call.resolve(ret);
+                return;
+            }
+
+            connections.remove(address);
+        }
+
         BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(address);
 
         if (bluetoothDevice == null) {
@@ -555,14 +571,14 @@ public class BluetoothLEClient extends Plugin {
         autoConnect = autoConnect == null ? false : autoConnect;
 
 
-        HashMap<String, Object> connection = new HashMap<>();
-        connection.put(keyDiscovered, SERVICES_UNDISCOVERED);
-        connection.put(keyOperationConnect, call);
+        HashMap<String, Object> con = new HashMap<>();
+        con.put(keyDiscovered, SERVICES_UNDISCOVERED);
+        con.put(keyOperationConnect, call);
 
         BluetoothGatt gatt = bluetoothDevice.connectGatt(getContext(), autoConnect, bluetoothGattCallback);
 
-        connection.put(keyPeripheral, gatt);
-        connections.put(address, connection);
+        con.put(keyPeripheral, gatt);
+        connections.put(address, con);
 
     }
 
@@ -579,7 +595,11 @@ public class BluetoothLEClient extends Plugin {
         HashMap<String, Object> connection = (HashMap<String, Object>) connections.get(address);
 
         if (connection == null) {
-            call.reject(keyErrorNotConnected);
+
+            JSObject ret = new JSObject();
+            addProperty(ret, keyDisconnected, true);
+            call.resolve(ret);
+
             return;
         }
 

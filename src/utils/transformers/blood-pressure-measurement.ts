@@ -77,13 +77,16 @@ export const BloodPressureMeasurementCallback: BluetoothGATTCallback = (data: Bl
         const bodyMovement = !!(measurementStatus & 0x1);
         const cuffTooLose = !!(measurementStatus & 0x2);
         const irregularPulse = !!(measurementStatus & 0x4);
-        //TODO: Pulse range detection flags
+
+        const pulseRateRange = (measurementStatus >> 3) & 0x3;
+
         const improperPosition = !!(measurementStatus & 0x20);
 
         const status = {
             bodyMovement,
             cuffTooLose,
             irregularPulse,
+            pulseRateRange,
             improperPosition
         };
 
@@ -92,3 +95,9 @@ export const BloodPressureMeasurementCallback: BluetoothGATTCallback = (data: Bl
 
     return measurement;
 };
+
+export enum PulseRateRange{
+    PULSE_RATE_WITHIN_RANGE = 0,
+    PULSE_RATE_EXCEEDS_UPPER_LIMIT = 1,
+    PULSE_RATE_LESS_THAN_LOWER_LIMIT = 2
+}

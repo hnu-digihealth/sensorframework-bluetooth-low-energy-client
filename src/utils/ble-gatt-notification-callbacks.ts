@@ -14,6 +14,10 @@ import {BluetoothGATTCallbacks} from "../definitions";
 import {GlucoseMeasurementCallback} from "./transformers/glucose-measurement";
 import {GlucoseMeasurementContextCallback} from "./transformers/glucose-measurement-context";
 import {GlucoseFeatureCallback} from "./transformers/glucose-feature";
+import {TemperatureMeasurementCallback} from "./transformers/temperature-measurement";
+import {TemperatureTypeCallback} from "./transformers/temperature-type";
+import {WeightScaleFeatureCallback} from "./transformers/weight-scale-feature";
+import {WeightMeasurementCallback} from "./transformers/weight-measurement";
 
 
 export const Callbacks: BluetoothGATTCallbacks = {
@@ -30,7 +34,12 @@ export const Callbacks: BluetoothGATTCallbacks = {
     [BluetoothGattCharacteristics.PLX_CONTINUOUS_MEASUREMENT]: PLXContinuousMeasurementCallback,
     [BluetoothGattCharacteristics.GLUCOSE_MEASUREMENT]: GlucoseMeasurementCallback,
     [BluetoothGattCharacteristics.GLUCOSE_MEASUREMENT_CONTEXT]: GlucoseMeasurementContextCallback,
-    [BluetoothGattCharacteristics.GLUCOSE_FEATURE]: GlucoseFeatureCallback
+    [BluetoothGattCharacteristics.GLUCOSE_FEATURE]: GlucoseFeatureCallback,
+    [BluetoothGattCharacteristics.TEMPERATURE_MEASUREMENT]: TemperatureMeasurementCallback,
+    [BluetoothGattCharacteristics.TEMPERATURE_TYPE]: TemperatureTypeCallback,
+    [BluetoothGattCharacteristics.INTERMEDIATE_TEMPERATURE]: TemperatureMeasurementCallback,
+    [BluetoothGattCharacteristics.WEIGHT_SCALE_FEATURE]: WeightScaleFeatureCallback,
+    [BluetoothGattCharacteristics.WEIGHT_MEASUREMENT]: WeightMeasurementCallback
 };
 
 

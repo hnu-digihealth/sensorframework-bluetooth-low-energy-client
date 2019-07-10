@@ -37,7 +37,17 @@ export const getSFloat = ( data: DataView, offset: number ) => {
     const mantissa = unsignedToSigned(value & 0xFFF, 12);
     const exp = unsignedToSigned((value >> 12) & 0xF, 4);
 
-    return (mantissa * Math.pow(10.0, exp));
+    return (mantissa * Math.pow(10, exp));
+};
+
+export const getFloat32 = (data: DataView, offset: number) => {
+
+    const value = data.getUint32(offset, true);
+
+    const mantissa = unsignedToSigned(value & 0xFFFFFF, 24);
+    const exp = unsignedToSigned((value >> 24) & 0xFF, 8);
+
+    return (mantissa * Math.pow(10, exp));
 };
 
 const unsignedToSigned = (unsigned: number, size: number) => {
@@ -47,6 +57,10 @@ const unsignedToSigned = (unsigned: number, size: number) => {
     }
 
     return unsigned;
+};
+
+export const applyDecimalExponent = (value: number, pow: number = 0, mult: number = 1) => {
+    return value * mult * Math.pow(10, pow);
 };
 
 

@@ -62,4 +62,25 @@ export const GlucoseMeasurementCallback = (data) => {
     measurement = Object.assign({}, measurement, { contextInformationFollows });
     return measurement;
 };
+export var GlucoseMeasurementSampleType;
+(function (GlucoseMeasurementSampleType) {
+    GlucoseMeasurementSampleType[GlucoseMeasurementSampleType["CAPILLARY_WHOLE_BLOOD"] = 1] = "CAPILLARY_WHOLE_BLOOD";
+    GlucoseMeasurementSampleType[GlucoseMeasurementSampleType["CAPILLARY_PLASMA"] = 2] = "CAPILLARY_PLASMA";
+    GlucoseMeasurementSampleType[GlucoseMeasurementSampleType["VENOUS_WHOLE_BLOOD"] = 3] = "VENOUS_WHOLE_BLOOD";
+    GlucoseMeasurementSampleType[GlucoseMeasurementSampleType["VENOUS_PLASMA"] = 4] = "VENOUS_PLASMA";
+    GlucoseMeasurementSampleType[GlucoseMeasurementSampleType["ARTERIAL_WHOLE_BLOOD"] = 5] = "ARTERIAL_WHOLE_BLOOD";
+    GlucoseMeasurementSampleType[GlucoseMeasurementSampleType["ARTERIAL_PLASMA"] = 6] = "ARTERIAL_PLASMA";
+    GlucoseMeasurementSampleType[GlucoseMeasurementSampleType["UNDETERMINED_WHOLE_BLOOD"] = 7] = "UNDETERMINED_WHOLE_BLOOD";
+    GlucoseMeasurementSampleType[GlucoseMeasurementSampleType["UNDETERMINED_PLASMA"] = 8] = "UNDETERMINED_PLASMA";
+    GlucoseMeasurementSampleType[GlucoseMeasurementSampleType["ISF"] = 9] = "ISF";
+    GlucoseMeasurementSampleType[GlucoseMeasurementSampleType["CONTROL_SOLUTION"] = 10] = "CONTROL_SOLUTION";
+})(GlucoseMeasurementSampleType || (GlucoseMeasurementSampleType = {}));
+export var GlucoseMeasurementSampleLocation;
+(function (GlucoseMeasurementSampleLocation) {
+    GlucoseMeasurementSampleLocation[GlucoseMeasurementSampleLocation["FINGER"] = 1] = "FINGER";
+    GlucoseMeasurementSampleLocation[GlucoseMeasurementSampleLocation["AST"] = 2] = "AST";
+    GlucoseMeasurementSampleLocation[GlucoseMeasurementSampleLocation["EAR_LOBE"] = 3] = "EAR_LOBE";
+    GlucoseMeasurementSampleLocation[GlucoseMeasurementSampleLocation["CONTROL_SOLUTION"] = 4] = "CONTROL_SOLUTION";
+    GlucoseMeasurementSampleLocation[GlucoseMeasurementSampleLocation["LOCATION_NOT_AVAILABLE"] = 15] = "LOCATION_NOT_AVAILABLE";
+})(GlucoseMeasurementSampleLocation || (GlucoseMeasurementSampleLocation = {}));
 //# sourceMappingURL=glucose-measurement.js.map

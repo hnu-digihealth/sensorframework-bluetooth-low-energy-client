@@ -1,16 +1,18 @@
 import { BluetoothGattCharacteristics } from "./utils/ble-gatt-characteristics.enum";
 import { BluetoothGattServices } from "./utils/ble-gatt-services.enum";
-declare module "@capacitor/core" {
+import { WebPlugin } from "@capacitor/core";
+declare module "@capacitor/core/dist/esm/core-plugin-definitions" {
     interface PluginRegistry {
         BluetoothLEClient: BluetoothLEClientPlugin;
     }
 }
-export interface BluetoothLEClientPlugin {
+export interface BluetoothLEClientPlugin extends WebPlugin {
     isAvailable(): Promise<BluetoothGATTAvailabilityResult>;
     isEnabled(): Promise<BluetoothGATTEnabledResult>;
     enable(): Promise<BluetoothGATTEnableResult>;
     scan(options: BluetoothGATTScanOptions): Promise<BluetoothGATTScanResults>;
     connect(options: BluetoothGATTConnectOptions): Promise<BluetoothGATTConnectResult>;
+    discover(options: BluetoothGATTServiceDiscoveryOptions): Promise<BluetoothGATTServiceDiscoveryResult>;
     disconnect(options: BluetoothGATTDisconnectOptions): Promise<BluetoothGATTDisconnectResult>;
     read(options: BluetoothGATTCharacteristicReadOptions): Promise<BluetoothGATTCharacteristicReadResult>;
     write(options: BluetoothGATTCharacteristicWriteOptions): Promise<BluetoothGATTCharacteristicWriteResult>;
@@ -20,6 +22,8 @@ export interface BluetoothLEClientPlugin {
     getService(options: GetServiceOptions): Promise<GetServiceResult>;
     getCharacteristics(options: GetCharacteristicOptions): Promise<GetCharacteristicResult>;
     getCharacteristic(options: GetCharacteristicOptions): Promise<GetCharacteristicResult>;
+    enableNotifications(options: BluetoothGATTNotificationOptions): Promise<BluetoothGATTEnableNotificationsResult>;
+    disableNotifications(options: BluetoothGATTNotificationOptions): Promise<BluetoothGATTDisableNotificationsResult>;
 }
 export declare type BluetoothGATTAvailabilityResult = {
     isAvailable: boolean;
