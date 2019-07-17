@@ -1,4 +1,7 @@
 # BluetoothLEClient
+
+[![npm version](https://badge.fury.io/js/cap-bluetooth-low-energy-client.svg)](https://badge.fury.io/js/cap-bluetooth-low-energy-client)
+ 
 A client implementation for interacting with Bluetooth Low Energy peripherals.
 
 
