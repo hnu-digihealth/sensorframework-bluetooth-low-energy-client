@@ -4,9 +4,9 @@ A client implementation for interacting with Bluetooth Low Energy peripherals.
 
 Supported platforms  
  
--[x] Web  
--[x] Android  
--[ ] iOS  
+- [x] Web  
+- [x] Android  
+- [ ] iOS  
 
 ## Usage
 
