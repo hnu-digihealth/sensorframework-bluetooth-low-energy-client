@@ -504,9 +504,8 @@ public class BluetoothLEClient extends Plugin {
     @PluginMethod()
     public void scan(PluginCall call) {
 
-        availableDevices = new HashMap<String, BluetoothDevice>();
-
         bleScanner = bluetoothAdapter.getBluetoothLeScanner();
+        availableDevices = new HashMap<String, BluetoothDevice>();
 
         scanCallback = new BLEScanCallback();
 

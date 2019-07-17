@@ -1,4 +1,4 @@
-export enum BluetoothGattCharacteristics{
+export enum BluetoothGATTCharacteristics{
 
     AEROBIC_HEART_RATE_LOWER_LIMIT = 0x2A7E,
 

@@ -1,4 +1,4 @@
-import {BluetoothGattCharacteristics} from "./ble-gatt-characteristics.enum";
+import {BluetoothGATTCharacteristics} from "./ble-gatt-characteristics.enum";
 import {BatteryLevelCallback} from "./transformers/battery-level";
 import {BodySensorLocationCallback} from "./transformers/body-sensor-location";
 import {HeartRateMeasurementCallback} from "./transformers/heart-rate-measurement";
@@ -21,25 +21,25 @@ import {WeightMeasurementCallback} from "./transformers/weight-measurement";
 
 
 export const Callbacks: BluetoothGATTCallbacks = {
-    [BluetoothGattCharacteristics.BATTERY_LEVEL]: BatteryLevelCallback,
-    [BluetoothGattCharacteristics.BODY_SENSOR_LOCATION]: BodySensorLocationCallback,
-    [BluetoothGattCharacteristics.HEART_RATE_MEASUREMENT]: HeartRateMeasurementCallback,
-    [BluetoothGattCharacteristics.CURRENT_TIME]: CurrentTimeCallback,
-    [BluetoothGattCharacteristics.BLOOD_PRESSURE_MEASUREMENT]: BloodPressureMeasurementCallback,
-    [BluetoothGattCharacteristics.BLOOD_PRESSURE_FEATURE]: BloodPressureFeatureCallback,
-    [BluetoothGattCharacteristics.BODY_COMPOSITION_MEASUREMENT]: BodyCompositionMeasurementCallback,
-    [BluetoothGattCharacteristics.BODY_COMPOSITION_FEATURE]: BodyCompositionFeatureCallback,
-    [BluetoothGattCharacteristics.PLX_FEATURES]: PLXFeaturesCallback,
-    [BluetoothGattCharacteristics.PLX_SPOT_CHECK_MEASUREMENT]: PLXSpotCheckMeasurementCallback,
-    [BluetoothGattCharacteristics.PLX_CONTINUOUS_MEASUREMENT]: PLXContinuousMeasurementCallback,
-    [BluetoothGattCharacteristics.GLUCOSE_MEASUREMENT]: GlucoseMeasurementCallback,
-    [BluetoothGattCharacteristics.GLUCOSE_MEASUREMENT_CONTEXT]: GlucoseMeasurementContextCallback,
-    [BluetoothGattCharacteristics.GLUCOSE_FEATURE]: GlucoseFeatureCallback,
-    [BluetoothGattCharacteristics.TEMPERATURE_MEASUREMENT]: TemperatureMeasurementCallback,
-    [BluetoothGattCharacteristics.TEMPERATURE_TYPE]: TemperatureTypeCallback,
-    [BluetoothGattCharacteristics.INTERMEDIATE_TEMPERATURE]: TemperatureMeasurementCallback,
-    [BluetoothGattCharacteristics.WEIGHT_SCALE_FEATURE]: WeightScaleFeatureCallback,
-    [BluetoothGattCharacteristics.WEIGHT_MEASUREMENT]: WeightMeasurementCallback
+    [BluetoothGATTCharacteristics.BATTERY_LEVEL]: BatteryLevelCallback,
+    [BluetoothGATTCharacteristics.BODY_SENSOR_LOCATION]: BodySensorLocationCallback,
+    [BluetoothGATTCharacteristics.HEART_RATE_MEASUREMENT]: HeartRateMeasurementCallback,
+    [BluetoothGATTCharacteristics.CURRENT_TIME]: CurrentTimeCallback,
+    [BluetoothGATTCharacteristics.BLOOD_PRESSURE_MEASUREMENT]: BloodPressureMeasurementCallback,
+    [BluetoothGATTCharacteristics.BLOOD_PRESSURE_FEATURE]: BloodPressureFeatureCallback,
+    [BluetoothGATTCharacteristics.BODY_COMPOSITION_MEASUREMENT]: BodyCompositionMeasurementCallback,
+    [BluetoothGATTCharacteristics.BODY_COMPOSITION_FEATURE]: BodyCompositionFeatureCallback,
+    [BluetoothGATTCharacteristics.PLX_FEATURES]: PLXFeaturesCallback,
+    [BluetoothGATTCharacteristics.PLX_SPOT_CHECK_MEASUREMENT]: PLXSpotCheckMeasurementCallback,
+    [BluetoothGATTCharacteristics.PLX_CONTINUOUS_MEASUREMENT]: PLXContinuousMeasurementCallback,
+    [BluetoothGATTCharacteristics.GLUCOSE_MEASUREMENT]: GlucoseMeasurementCallback,
+    [BluetoothGATTCharacteristics.GLUCOSE_MEASUREMENT_CONTEXT]: GlucoseMeasurementContextCallback,
+    [BluetoothGATTCharacteristics.GLUCOSE_FEATURE]: GlucoseFeatureCallback,
+    [BluetoothGATTCharacteristics.TEMPERATURE_MEASUREMENT]: TemperatureMeasurementCallback,
+    [BluetoothGATTCharacteristics.TEMPERATURE_TYPE]: TemperatureTypeCallback,
+    [BluetoothGATTCharacteristics.INTERMEDIATE_TEMPERATURE]: TemperatureMeasurementCallback,
+    [BluetoothGATTCharacteristics.WEIGHT_SCALE_FEATURE]: WeightScaleFeatureCallback,
+    [BluetoothGATTCharacteristics.WEIGHT_MEASUREMENT]: WeightMeasurementCallback
 };
 
 

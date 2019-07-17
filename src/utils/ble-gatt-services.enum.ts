@@ -1,4 +1,4 @@
-export enum BluetoothGattServices{
+export enum BluetoothGATTServices{
 
     GENERIC_ACCESS = 0x1800,
 

@@ -1,48 +1,50 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:2:3-9:14
-INJECTED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:2:3-9:14
-INJECTED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:2:3-9:14
-INJECTED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:2:3-9:14
-INJECTED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:2:3-9:14
-INJECTED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:2:3-9:14
-INJECTED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:2:3-9:14
+ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:2:1-17:12
+INJECTED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:2:1-17:12
+INJECTED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:2:1-17:12
+INJECTED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:2:1-17:12
+INJECTED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:2:1-17:12
+INJECTED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:2:1-17:12
+INJECTED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:2:1-17:12
 	package
-		ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:3:7-65
+		ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:3:5-63
 		INJECTED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml
 		INJECTED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml
-		ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:2:3-9:14
+		ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:2:1-17:12
 		INJECTED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml
-		ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:2:3-9:14
+		ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:2:1-17:12
 		INJECTED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:2:13-71
+		ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.BLUETOOTH
-ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:4:5-67
+ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:5:5-68
 	android:name
-		ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:4:22-65
+		ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:5:22-65
 uses-permission#android.permission.BLUETOOTH_ADMIN
-ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:5:5-73
+ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:6:5-74
 	android:name
-		ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:5:22-71
+		ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:6:22-71
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:6:5-80
+ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:7:5-81
 	android:name
-		ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:6:22-78
+		ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:7:22-78
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:7:5-78
+ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:8:5-79
 	android:name
-		ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:7:22-76
+		ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:8:22-76
 uses-feature#android.hardware.bluetooth_le
-ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:8:5-90
+ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:10:5-12:36
 	android:required
-		ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:8:64-88
+		ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:12:9-33
 	android:name
-		ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:8:19-63
+		ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:11:9-53
+application
+ADDED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml:14:5-15:19
 uses-sdk
 INJECTED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\git\capacitorTest\node_modules\cap-bluetooth-low-energy-client\android\src\main\AndroidManifest.xml

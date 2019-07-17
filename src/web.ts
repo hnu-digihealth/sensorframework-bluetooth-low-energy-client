@@ -30,7 +30,7 @@ import {
   GetServiceResult
 } from './definitions';
 import {get16BitUUID} from "./utils/utils";
-import {BluetoothGattCharacteristics} from "./utils/ble-gatt-characteristics.enum";
+import {BluetoothGATTCharacteristics} from "./utils/ble-gatt-characteristics.enum";
 import {NotConnectedError, OptionsRequiredError} from "./utils/errors";
 
 const nav: Navigator = navigator;
@@ -505,7 +505,7 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
     };
   }
 
-  private async getIncludedCharacteristicUuids(service: BluetoothRemoteGATTService): Promise<Array<BluetoothGattCharacteristics | number>> {
+  private async getIncludedCharacteristicUuids(service: BluetoothRemoteGATTService): Promise<Array<BluetoothGATTCharacteristics | number>> {
     let characteristics: BluetoothRemoteGATTCharacteristic[] = [];
 
     try {

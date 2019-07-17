@@ -17,4 +17,8 @@
         android:name="android.hardware.bluetooth_le"
         android:required="false" />
 
+    <application>
+        <activity android:name="com.bleclient.plugin.BluetoothLeScanActivity" />
+    </application>
+
 </manifest>

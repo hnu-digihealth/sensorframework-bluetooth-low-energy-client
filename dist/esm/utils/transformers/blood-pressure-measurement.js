@@ -62,10 +62,4 @@ export const BloodPressureMeasurementCallback = (data) => {
     }
     return measurement;
 };
-export var PulseRateRange;
-(function (PulseRateRange) {
-    PulseRateRange[PulseRateRange["PULSE_RATE_WITHIN_RANGE"] = 0] = "PULSE_RATE_WITHIN_RANGE";
-    PulseRateRange[PulseRateRange["PULSE_RATE_EXCEEDS_UPPER_LIMIT"] = 1] = "PULSE_RATE_EXCEEDS_UPPER_LIMIT";
-    PulseRateRange[PulseRateRange["PULSE_RATE_LESS_THAN_LOWER_LIMIT"] = 2] = "PULSE_RATE_LESS_THAN_LOWER_LIMIT";
-})(PulseRateRange || (PulseRateRange = {}));
 //# sourceMappingURL=blood-pressure-measurement.js.map

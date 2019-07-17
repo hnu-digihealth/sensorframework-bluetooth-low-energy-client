@@ -1,4 +1,4 @@
-export declare enum BluetoothGattCharacteristics {
+export declare enum BluetoothGATTCharacteristics {
     AEROBIC_HEART_RATE_LOWER_LIMIT = 10878,
     AEROBIC_HEART_RATE_UPPER_LIMIT = 10884,
     AEROBIC_THRESHOLD = 10879,

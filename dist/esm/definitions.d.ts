@@ -1,5 +1,5 @@
-import { BluetoothGattCharacteristics } from "./utils/ble-gatt-characteristics.enum";
-import { BluetoothGattServices } from "./utils/ble-gatt-services.enum";
+import { BluetoothGATTCharacteristics } from "./utils/ble-gatt-characteristics.enum";
+import { BluetoothGATTServices } from "./utils/ble-gatt-services.enum";
 import { WebPlugin } from "@capacitor/core";
 declare module "@capacitor/core/dist/esm/core-plugin-definitions" {
     interface PluginRegistry {
@@ -25,111 +25,111 @@ export interface BluetoothLEClientPlugin extends WebPlugin {
     enableNotifications(options: BluetoothGATTNotificationOptions): Promise<BluetoothGATTEnableNotificationsResult>;
     disableNotifications(options: BluetoothGATTNotificationOptions): Promise<BluetoothGATTDisableNotificationsResult>;
 }
-export declare type BluetoothGATTAvailabilityResult = {
+export interface BluetoothGATTAvailabilityResult {
     isAvailable: boolean;
-};
-export declare type BluetoothGATTEnabledResult = {
+}
+export interface BluetoothGATTEnabledResult {
     enabled: boolean;
-};
+}
 export declare type BluetoothGATTEnableResult = {
     enabled: boolean;
 };
-export declare type BluetoothGATTScanOptions = {
-    services: Array<BluetoothGattServices | number>;
-};
-export declare type BluetoothGATTPeripheral = {
+export interface BluetoothGATTScanOptions {
+    services: Array<BluetoothGATTServices | number>;
+}
+export interface BluetoothGATTPeripheral {
     name: string;
     id: string;
-};
-export declare type BluetoothGATTScanResults = {
+}
+export interface BluetoothGATTScanResults {
     devices: BluetoothGATTPeripheral[];
-};
-export declare type BluetoothGATTConnectOptions = {
+}
+export interface BluetoothGATTConnectOptions {
     id: string;
     autoConnect?: boolean;
-};
-export declare type BluetoothGATTConnectResult = {
+}
+export interface BluetoothGATTConnectResult {
     connected: true;
-};
-export declare type BluetoothGATTDisconnectOptions = {
+}
+export interface BluetoothGATTDisconnectOptions {
     id: string;
-};
-export declare type BluetoothGATTDisconnectResult = {
+}
+export interface BluetoothGATTDisconnectResult {
     disconnected: true;
-};
-export declare type BluetoothGATTServiceDiscoveryOptions = {
+}
+export interface BluetoothGATTServiceDiscoveryOptions {
     id: string;
-};
-export declare type BluetoothGATTServiceDiscoveryResult = {
+}
+export interface BluetoothGATTServiceDiscoveryResult {
     discovered: true;
-};
+}
 export declare type BluetoothGATTByteData = number[];
-export declare type BluetoothGATTCharacteristicReadOptions = {
+export interface BluetoothGATTCharacteristicReadOptions {
     id: string;
-    service: BluetoothGattServices | number;
-    characteristic: BluetoothGattCharacteristics | number;
-};
-export declare type BluetoothGATTCharacteristicReadResult = {
+    service: BluetoothGATTServices | number;
+    characteristic: BluetoothGATTCharacteristics | number;
+}
+export interface BluetoothGATTCharacteristicReadResult {
     value: BluetoothGATTByteData;
-};
-export declare type BluetoothGATTCharacteristicWriteOptions = {
+}
+export interface BluetoothGATTCharacteristicWriteOptions {
     id: string;
-    service: BluetoothGattServices | number;
-    characteristic: BluetoothGattCharacteristics | number;
+    service: BluetoothGATTServices | number;
+    characteristic: BluetoothGATTCharacteristics | number;
     value: string;
-};
-export declare type BluetoothGATTCharacteristicWriteResult = {
+}
+export interface BluetoothGATTCharacteristicWriteResult {
     value: BluetoothGATTByteData;
-};
-export declare type BluetoothGATTDescriptorReadOptions = {
+}
+export interface BluetoothGATTDescriptorReadOptions {
     id: string;
-    service: BluetoothGattServices | number;
-    characteristic: BluetoothGattCharacteristics | number;
+    service: BluetoothGATTServices | number;
+    characteristic: BluetoothGATTCharacteristics | number;
     descriptor: number;
-};
-export declare type BluetoothGATTDescriptorReadResult = {
+}
+export interface BluetoothGATTDescriptorReadResult {
     value: BluetoothGATTByteData;
-};
-export declare type BluetoothGATTDescriptorWriteOptions = {
+}
+export interface BluetoothGATTDescriptorWriteOptions {
     id: string;
-    service: BluetoothGattServices | number;
-    characteristic: BluetoothGattCharacteristics | number;
+    service: BluetoothGATTServices | number;
+    characteristic: BluetoothGATTCharacteristics | number;
     descriptor: number;
     value: string;
-};
-export declare type BluetoothGATTDescriptorWriteResult = {
+}
+export interface BluetoothGATTDescriptorWriteResult {
     value: BluetoothGATTByteData;
-};
-export declare type BluetoothGATTNotificationOptions = {
+}
+export interface BluetoothGATTNotificationOptions {
     id: string;
-    service: BluetoothGattServices | number;
-    characteristic: BluetoothGattCharacteristics | number;
-};
-export declare type BluetoothGATTEnableNotificationsResult = {
+    service: BluetoothGATTServices | number;
+    characteristic: BluetoothGATTCharacteristics | number;
+}
+export interface BluetoothGATTEnableNotificationsResult {
     enabled: true;
-};
-export declare type BluetoothGATTDisableNotificationsResult = {
+}
+export interface BluetoothGATTDisableNotificationsResult {
     disabled: true;
-};
-export declare type GetServiceOptions = {
+}
+export interface GetServiceOptions {
     id: string;
-    service?: BluetoothGattServices | number;
-};
-export declare type GATTService = {
-    uuid: BluetoothGattServices | number;
+    service?: BluetoothGATTServices | number;
+}
+export interface GATTService {
+    uuid: BluetoothGATTServices | number;
     isPrimary: boolean;
-    characteristics: Array<BluetoothGattCharacteristics | number>;
-    included?: Array<BluetoothGattServices | number>;
-};
+    characteristics: Array<BluetoothGATTCharacteristics | number>;
+    included?: Array<BluetoothGATTServices | number>;
+}
 export declare type GetServiceResult = GATTService | {
     services: GATTService[];
 };
-export declare type GetCharacteristicOptions = {
+export interface GetCharacteristicOptions {
     id: string;
-    service: BluetoothGattServices | number;
-    characteristic?: BluetoothGattCharacteristics | number;
-};
-export declare type GATTCharacteristicProperties = {
+    service: BluetoothGATTServices | number;
+    characteristic?: BluetoothGATTCharacteristics | number;
+}
+export interface GATTCharacteristicProperties {
     authenticatedSignedWrites: boolean;
     broadcast: boolean;
     indicate: boolean;
@@ -139,16 +139,16 @@ export declare type GATTCharacteristicProperties = {
     writeWithoutResponse: boolean;
     reliableWrite?: boolean;
     writableAuxiliaries?: boolean;
-};
-export declare type GATTCharacteristic = {
-    uuid: BluetoothGattCharacteristics | number;
+}
+export interface GATTCharacteristic {
+    uuid: BluetoothGATTCharacteristics | number;
     properties: GATTCharacteristicProperties;
     descriptors: number[];
-};
+}
 export declare type GetCharacteristicResult = GATTCharacteristic | {
     characteristics: GATTCharacteristic[];
 };
 export declare type BluetoothGATTCallback = (data: BluetoothGATTByteData) => any;
-export declare type BluetoothGATTCallbacks = {
+export interface BluetoothGATTCallbacks {
     [characteristic: number]: BluetoothGATTCallback;
-};
+}

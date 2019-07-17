@@ -1,4 +1,4 @@
-export declare enum BluetoothGattServices {
+export declare enum BluetoothGATTServices {
     GENERIC_ACCESS = 6144,
     ALERT_NOTIFICATION = 6161,
     AUTOMATION_IO = 6165,
