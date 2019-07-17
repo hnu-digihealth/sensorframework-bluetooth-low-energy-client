@@ -2,10 +2,11 @@
 A client implementation for interacting with Bluetooth Low Energy peripherals.
 
 
-Supported platforms 
--[x] Web
+Supported platforms  
+ 
+-[x] Web  
 -[x] Android  
--[ ] iOS
+-[ ] iOS  
 
 ## Usage
 

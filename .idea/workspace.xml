@@ -2,48 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf9d3911-2a91-45cc-8732-9bb291ec03ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/transformers/enums.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android/android.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build/intermediates/compile_library_classes/debug/classes.jar" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/compile_library_classes/debug/classes.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build/intermediates/compile_only_not_namespaced_r_class_jar/debug/generateDebugRFile/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/compile_only_not_namespaced_r_class_jar/debug/generateDebugRFile/R.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/packageDebugResources/merged.dir/values/values.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/bleclient/plugin/BluetoothLEClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/bleclient/plugin/BluetoothLEClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build/intermediates/library_manifest/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/library_manifest/debug/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build/intermediates/runtime_library_classes/debug/classes.jar" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/runtime_library_classes/debug/classes.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build/intermediates/symbols/debug/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/symbols/debug/R.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/cap-bluetooth-low-energy-client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android/cap-bluetooth-low-energy-client.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/bleclient/plugin/BluetoothLEClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/bleclient/plugin/BluetoothLEClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/esm/definitions.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/definitions.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/esm/utils/ble-gatt-characteristics.enum.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/ble-gatt-characteristics.enum.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/esm/utils/ble-gatt-characteristics.enum.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/ble-gatt-characteristics.enum.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/esm/utils/ble-gatt-notification-callbacks.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/ble-gatt-notification-callbacks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/esm/utils/ble-gatt-services.enum.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/ble-gatt-services.enum.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/esm/utils/ble-gatt-services.enum.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/esm/utils/ble-gatt-services.enum.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/definitions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/definitions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ble-gatt-characteristics.enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/ble-gatt-characteristics.enum.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ble-gatt-notification-callbacks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/ble-gatt-notification-callbacks.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ble-gatt-services.enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/ble-gatt-services.enum.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/transformers/blood-pressure-measurement.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/transformers/blood-pressure-measurement.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/transformers/body-sensor-location.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/transformers/body-sensor-location.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/transformers/glucose-measurement-context.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/transformers/glucose-measurement-context.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/transformers/glucose-measurement.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/transformers/glucose-measurement.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/transformers/temperature-type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/transformers/temperature-type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/web.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/web.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -122,11 +81,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
               <caret line="5" column="43" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/readme.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="85">
+                <caret line="5" selection-start-line="5" selection-end-line="5" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -139,24 +119,6 @@
               <folding>
                 <element signature="e#0#79#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/transformers/plx-continuous-measurement.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1644">
-              <caret column="52" selection-start-column="52" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/transformers/plx-features.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1134">
-              <caret column="52" selection-start-column="52" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -178,7 +140,6 @@
       <list>
         <option value="$PROJECT_DIR$/android/src/main/java/com/bleclient/plugin/BluetoothLEClient.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/utils/errors.ts" />
         <option value="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/utils/transformers/battery-level.ts" />
@@ -196,7 +157,6 @@
         <option value="$PROJECT_DIR$/src/utils/utils.ts" />
         <option value="$PROJECT_DIR$/tsconfig.json" />
         <option value="$PROJECT_DIR$/src/utils/transformers/temperature-measurement.ts" />
-        <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/src/utils/ble-gatt-services.enum.ts" />
         <option value="$PROJECT_DIR$/src/utils/ble-gatt-characteristics.enum.ts" />
         <option value="$PROJECT_DIR$/src/utils/ble-gatt-notification-callbacks.ts" />
@@ -209,6 +169,8 @@
         <option value="$PROJECT_DIR$/src/utils/transformers/temperature-type.ts" />
         <option value="$PROJECT_DIR$/src/utils/transformers/enums.ts" />
         <option value="$PROJECT_DIR$/src/index.ts" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/readme.md" />
       </list>
     </option>
   </component>
@@ -229,17 +191,6 @@
             <path>
               <item name="cap-bluetooth-low-energy-client" type="b2602c69:ProjectViewProjectNode" />
               <item name="cap-bluetooth-low-energy-client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cap-bluetooth-low-energy-client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cap-bluetooth-low-energy-client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cap-bluetooth-low-energy-client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cap-bluetooth-low-energy-client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -305,12 +256,12 @@
       <workItem from="1562921568225" duration="661000" />
       <workItem from="1563180464219" duration="3282000" />
       <workItem from="1563274569225" duration="9609000" />
-      <workItem from="1563353808398" duration="4120000" />
+      <workItem from="1563353808398" duration="4434000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124382000" />
+    <option name="totallyTimeSpent" value="124696000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1613" height="873" extended-state="6" />
@@ -424,16 +375,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="578">
-            <caret line="34" selection-start-line="34" selection-end-line="34" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/ble-gatt-services.enum.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -484,13 +425,6 @@
             <element signature="n#!!block;n#getIncludedCharacteristicUuids#0;n#BluetoothLEClientWeb#0" />
             <element signature="n#!!block;n#getIncludedDescriptorUuids#0;n#BluetoothLEClientWeb#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -668,6 +602,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="43" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="85">
+            <caret line="5" selection-start-line="5" selection-end-line="5" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
