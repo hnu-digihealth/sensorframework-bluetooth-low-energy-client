@@ -1,6 +1,6 @@
 {
   "name": "cap-bluetooth-low-energy-client",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Capacitor Bluetooth Low Energy Client Plugin",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
