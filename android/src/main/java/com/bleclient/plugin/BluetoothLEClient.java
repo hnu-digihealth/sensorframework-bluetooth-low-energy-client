@@ -456,6 +456,11 @@ public class BluetoothLEClient extends Plugin {
         }
     }
 
+    @Override
+    protected void handleOnStart() {
+        BluetoothManager bluetoothManager = (BluetoothManager) getContext().getSystemService(Context.BLUETOOTH_SERVICE);
+        bluetoothAdapter = bluetoothManager.getAdapter();
+    }
 
     @PluginMethod()
     public void isAvailable(PluginCall call) {
@@ -474,14 +479,9 @@ public class BluetoothLEClient extends Plugin {
     @PluginMethod()
     public void isEnabled(PluginCall call) {
 
-        if (bluetoothAdapter == null) {
-            BluetoothManager bluetoothManager = (BluetoothManager) getContext().getSystemService(Context.BLUETOOTH_SERVICE);
-            bluetoothAdapter = bluetoothManager.getAdapter();
-        }
-
         JSObject ret = new JSObject();
 
-        if (!(bluetoothAdapter == null) && bluetoothAdapter.isEnabled()) {
+        if (bluetoothAdapter.isEnabled()) {
             ret.put(keyEnabled, true);
             call.resolve(ret);
         } else {
@@ -492,10 +492,8 @@ public class BluetoothLEClient extends Plugin {
 
     @PluginMethod()
     public void enable(PluginCall call) {
-        BluetoothManager bluetoothManager = (BluetoothManager) getContext().getSystemService(Context.BLUETOOTH_SERVICE);
-        bluetoothAdapter = bluetoothManager.getAdapter();
 
-        if (bluetoothAdapter == null || !bluetoothAdapter.isEnabled()) {
+        if (!bluetoothAdapter.isEnabled()) {
             Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(call, enableIntent, REQUEST_ENABLE_BT);
         }
