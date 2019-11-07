@@ -39,12 +39,22 @@ public class MainActivity extends BridgeActivity {
 
 
 ```typescript
-import {Plugins} from "@capacitor/core";
+import 'cap-bluetooth-low-energy-client';
+import {Plugins} from '@capacitor/core';
 
 const {BluetoothLEClient} = Plugins;
 
 //...do something with plugin
 
+```
+
+If you just want to use the web implementation of the plugin,
+you can import it directly:
+
+```typescript
+import {BluetoothLEClient} from 'cap-bluetooth-low-energy-client';
+
+//...do something with the plugin
 ```
 
 ## API Documentation
