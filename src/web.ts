@@ -48,11 +48,14 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
     });
   }
 
-  /**
-   * Returns {isAvailable: true} by default since there is no proper way to check whether Bluetooth is available
-   */
   async isAvailable(): Promise<BluetoothGATTAvailabilityResult> {
-    const isAvailable = true;
+
+    let isAvailable = false;
+
+    if(!!(nav.bluetooth) && !!(nav.bluetooth.getAvailability)){
+      isAvailable = await nav.bluetooth.getAvailability();
+    }
+
     return {isAvailable};
   }
 
