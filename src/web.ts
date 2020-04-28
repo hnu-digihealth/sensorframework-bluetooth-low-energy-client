@@ -34,7 +34,23 @@ import {
 import {base64ToBytes} from "./utils/utils";
 import {NotConnectedError, OptionsRequiredError} from "./utils/errors";
 
-const nav: Navigator = navigator;
+interface BluetoothProvider {
+  bluetooth: {
+    requestDevice: (options: {
+      filters: Array<{services: Array<BluetoothGATTService>}>,
+      optionalServices: Array<BluetoothGATTService>,
+      acceptAllDevices: boolean
+    }) => Promise<BluetoothDevice>;
+  }
+}
+
+// If this browser does not support bluetooth, don't fail unless we try to use it
+const nav: BluetoothProvider =
+  typeof navigator === "undefined"
+    ? { bluetooth: { requestDevice: () => {
+      throw new Error("Bluetooth is not supported");
+    } } }
+    : navigator;
 
 export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClientPlugin {
 
