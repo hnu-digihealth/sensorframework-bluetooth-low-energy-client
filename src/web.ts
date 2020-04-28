@@ -85,7 +85,7 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
     const filters = options.services.map((service) => {
       return {services: [service]};
     });
-    const optionalServices: number[] = options.services || [];
+    const optionalServices: BluetoothGATTService[] = options.services || [];
 
     try {
 

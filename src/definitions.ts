@@ -66,6 +66,7 @@ export type BluetoothGATTEnableResult = {
 
 export interface BluetoothGATTScanOptions{
   services: Array<BluetoothGATTService>
+  optionalServices: Array<BluetoothGATTService>
 }
 
 export interface BluetoothGATTPeripheral{
