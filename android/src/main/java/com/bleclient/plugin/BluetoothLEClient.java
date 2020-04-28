@@ -331,17 +331,14 @@ public class BluetoothLEClient extends Plugin {
 
             byte[] characteristicValue = characteristic.getValue();
 
-
-            Integer characteristic16BitUuid = get16BitUUID(characteristicUuid);
-
-            if (characteristic16BitUuid == null) {
+            if (characteristicUuid == null) {
                 return;
             }
 
             JSObject ret = new JSObject();
             addProperty(ret, keyValue, jsByteArray(characteristicValue));
 
-            notifyListeners(characteristic16BitUuid.toString(), ret);
+            notifyListeners(characteristicUuid.toString(), ret);
         }
 
         @Override
@@ -453,6 +450,18 @@ public class BluetoothLEClient extends Plugin {
         }
     }
 
+    private class AnyUuid {
+        final Integer intValue;
+        final String stringValue;
+        final Boolean isValid;
+
+        AnyUuid(PluginCall call, String key) {
+            this.intValue = call.getInt(key);
+            this.stringValue = call.getString(key);
+            this.isValid = !(this.intValue == null && this.stringValue == null);
+        }
+    }
+
     @Override
     protected void handleOnStart() {
         BluetoothManager bluetoothManager = (BluetoothManager) getContext().getSystemService(Context.BLUETOOTH_SERVICE);
@@ -509,7 +518,7 @@ public class BluetoothLEClient extends Plugin {
                 .build();
 
 
-        ArrayList<UUID> uuids = getServiceUuids(call.getArray(keyServices));
+        List<UUID> uuids = getServiceUuids(call.getArray(keyServices));
 
         List<ScanFilter> filters = new ArrayList<ScanFilter>();
 
@@ -655,9 +664,9 @@ public class BluetoothLEClient extends Plugin {
 
         BluetoothGatt gatt = (BluetoothGatt) connection.get(keyPeripheral);
 
-        Integer propertyService = call.getInt(keyService);
+        AnyUuid propertyService = getUuid(call, keyService);
 
-        if (propertyService == null) {
+        if (!propertyService.isValid) {
             call.reject(keyErrorServiceMissing);
             return;
         }
@@ -671,9 +680,9 @@ public class BluetoothLEClient extends Plugin {
             return;
         }
 
-        Integer propertyCharacteristic = call.getInt(keyCharacteristic);
+        AnyUuid propertyCharacteristic = getUuid(call, keyCharacteristic);
 
-        if (propertyCharacteristic == null) {
+        if (!propertyCharacteristic.isValid) {
             call.reject(keyErrorCharacteristicMissing);
             return;
         }
@@ -748,9 +757,9 @@ public class BluetoothLEClient extends Plugin {
 
         BluetoothGatt gatt = (BluetoothGatt) connection.get(keyPeripheral);
 
-        Integer propertyService = call.getInt(keyService);
+        AnyUuid propertyService = getUuid(call, keyService);
 
-        if (propertyService == null) {
+        if (!propertyService.isValid) {
             call.reject(keyErrorServiceMissing);
             return;
         }
@@ -764,16 +773,16 @@ public class BluetoothLEClient extends Plugin {
             return;
         }
 
-        Integer propertyCharacteristic = call.getInt(keyCharacteristic);
+        AnyUuid propertyCharacteristic = getUuid(call, keyCharacteristic);
 
-        if (propertyCharacteristic == null) {
+        if (!propertyCharacteristic.isValid) {
             call.reject(keyErrorCharacteristicMissing);
             return;
         }
 
-        UUID charactristicUuid = get128BitUUID(propertyCharacteristic);
+        UUID characteristicUuid = get128BitUUID(propertyCharacteristic);
 
-        BluetoothGattCharacteristic characteristic = service.getCharacteristic(charactristicUuid);
+        BluetoothGattCharacteristic characteristic = service.getCharacteristic(characteristicUuid);
 
         if (characteristic == null) {
             call.reject(keyErrorCharacteristicNotFound);
@@ -832,16 +841,16 @@ public class BluetoothLEClient extends Plugin {
 
         BluetoothGatt gatt = (BluetoothGatt) connection.get(keyPeripheral);
 
-        Integer propertyCharacteristic = call.getInt(keyCharacteristic);
+        AnyUuid propertyCharacteristic = getUuid(call, keyCharacteristic);
 
-        if (propertyCharacteristic == null) {
+        if (!propertyCharacteristic.isValid) {
             call.reject(keyErrorCharacteristicMissing);
             return;
         }
 
-        Integer propertyService = call.getInt(keyService);
+        AnyUuid propertyService = getUuid(call, keyService);
 
-        if (propertyService == null) {
+        if (!propertyService.isValid) {
             call.reject(keyErrorServiceMissing);
             return;
         }
@@ -976,23 +985,23 @@ public class BluetoothLEClient extends Plugin {
 
         BluetoothGatt gatt = (BluetoothGatt) connection.get(keyPeripheral);
 
-        Integer propertyService = call.getInt(keyService);
+        AnyUuid propertyService = getUuid(call, keyService);
 
-        if (propertyService == null) {
+        if (!propertyService.isValid) {
             call.reject(keyErrorServiceMissing);
             return;
         }
 
-        Integer propertyCharacteristic = call.getInt(keyCharacteristic);
+        AnyUuid propertyCharacteristic = getUuid(call, keyCharacteristic);
 
-        if (propertyCharacteristic == null) {
+        if (!propertyCharacteristic.isValid) {
             call.reject(keyErrorCharacteristicMissing);
             return;
         }
 
-        Integer propertyDescriptor = call.getInt(keyDescriptor);
+        AnyUuid propertyDescriptor = getUuid(call, keyDescriptor);
 
-        if (propertyDescriptor == null) {
+        if (!propertyDescriptor.isValid) {
             call.reject(keyErrorDescriptorMissing);
             return;
         }
@@ -1083,9 +1092,9 @@ public class BluetoothLEClient extends Plugin {
 
         BluetoothGatt peripheral = (BluetoothGatt) connection.get(keyPeripheral);
 
-        Integer propertyService = call.getInt(keyUuid);
+        AnyUuid propertyService = getUuid(call, keyUuid);
 
-        if (propertyService == null) {
+        if (!propertyService.isValid) {
             call.reject(keyErrorServiceMissing);
             return;
         }
@@ -1119,9 +1128,9 @@ public class BluetoothLEClient extends Plugin {
 
         BluetoothGatt gatt = (BluetoothGatt) connection.get(keyPeripheral);
 
-        Integer propertyService = call.getInt(keyService);
+        AnyUuid propertyService = getUuid(call, keyService);
 
-        if (propertyService == null) {
+        if (!propertyService.isValid) {
             call.reject(keyErrorServiceMissing);
             return;
         }
@@ -1166,9 +1175,9 @@ public class BluetoothLEClient extends Plugin {
 
         BluetoothGatt gatt = (BluetoothGatt) connection.get(keyPeripheral);
 
-        Integer propertyService = call.getInt(keyService);
+        AnyUuid propertyService = getUuid(call, keyService);
 
-        if (propertyService == null) {
+        if (!propertyService.isValid) {
             call.reject(keyErrorServiceMissing);
             return;
         }
@@ -1180,9 +1189,9 @@ public class BluetoothLEClient extends Plugin {
             return;
         }
 
-        Integer propertyCharacteristic = call.getInt(keyCharacteristic);
+        AnyUuid propertyCharacteristic = getUuid(call, keyCharacteristic);
 
-        if (propertyCharacteristic == null) {
+        if (!propertyCharacteristic.isValid) {
             call.reject(keyErrorCharacteristicMissing);
             return;
         }
@@ -1235,7 +1244,7 @@ public class BluetoothLEClient extends Plugin {
     private JSObject createJSBluetoothGattService(BluetoothGattService service) {
         JSObject retService = new JSObject();
 
-        addProperty(retService, keyUuid, get16BitUUID(service.getUuid()));
+        addProperty(retService, keyUuid, service.getUuid().toString());
 
         if (service.getType() == BluetoothGattService.SERVICE_TYPE_PRIMARY) {
             addProperty(retService, keyIsPrimaryService, true);
@@ -1244,20 +1253,20 @@ public class BluetoothLEClient extends Plugin {
         }
 
 
-        ArrayList<Integer> included = new ArrayList<>();
+        ArrayList<String> included = new ArrayList<>();
         List<BluetoothGattService> subServices = service.getIncludedServices();
 
         for (BluetoothGattService incService : subServices) {
-            included.add(get16BitUUID(incService.getUuid()));
+            included.add(incService.getUuid().toString());
         }
 
         retService.put(keyIncludedServices, JSArray.from(included.toArray()));
 
-        ArrayList<Integer> retCharacteristics = new ArrayList<>();
+        ArrayList<String> retCharacteristics = new ArrayList<>();
         List<BluetoothGattCharacteristic> characteristics = service.getCharacteristics();
 
         for (BluetoothGattCharacteristic characteristic : characteristics) {
-            retCharacteristics.add(get16BitUUID(characteristic.getUuid()));
+            retCharacteristics.add(characteristic.getUuid().toString());
         }
 
         retService.put(keyCharacteristics, JSArray.from(retCharacteristics.toArray()));
@@ -1269,14 +1278,14 @@ public class BluetoothLEClient extends Plugin {
 
         JSObject retCharacteristic = new JSObject();
 
-        addProperty(retCharacteristic, keyUuid, get16BitUUID(characteristic.getUuid()));
+        addProperty(retCharacteristic, keyUuid, characteristic.getUuid().toString());
         addProperty(retCharacteristic, keyCharacteristicProperies, getCharacteristicProperties(characteristic));
 
         List<BluetoothGattDescriptor> descriptors = characteristic.getDescriptors();
-        ArrayList<Integer> descriptorUuids = new ArrayList<>();
+        ArrayList<String> descriptorUuids = new ArrayList<>();
 
         for (BluetoothGattDescriptor descriptor : descriptors) {
-            descriptorUuids.add(get16BitUUID(descriptor.getUuid()));
+            descriptorUuids.add(descriptor.getUuid().toString());
         }
 
         addProperty(retCharacteristic, keyCharacterisicDescripors, JSArray.from(descriptorUuids.toArray()));
@@ -1380,22 +1389,60 @@ public class BluetoothLEClient extends Plugin {
         return JSArray.from(ints);
     }
 
+    private AnyUuid getUuid(PluginCall call, String key) {
+        return new AnyUuid(call, key);
+    }
 
-        ArrayList<UUID> serviceUuids = new ArrayList<>();
     private List<UUID> getServiceUuids(JSArray serviceUuidArray) {
 
-        if (serviceUuidArray == null) {
-            return serviceUuids;
-        }
 
-        List<Integer> uuidList;
+        ArrayList<UUID> emptyList = new ArrayList<>();
+
+        if (serviceUuidArray == null) {
+            return emptyList;
+        }
 
         try {
-            uuidList = serviceUuidArray.toList();
-        } catch (JSONException e) {
+            return getServiceUuidsFromIntegers(serviceUuidArray);
+        } catch (Exception e) {
+            // fallthrough
+        }
+
+        try {
+            return getServiceUuidsFromStrings(serviceUuidArray);
+        } catch (JSONException ee) {
             Log.e(getLogTag(), "Error while converting JSArray to List");
+            return emptyList;
+        } catch (IllegalArgumentException eee) {
+            Log.e(getLogTag(), "Invalid uuid string");
+            return emptyList;
+        }
+    }
+
+    private List<UUID> getServiceUuidsFromStrings(JSArray serviceUuidArray) throws JSONException {
+        List<UUID> serviceUuids = new ArrayList<>();
+        List<String> uuidList = serviceUuidArray.toList();
+
+        if (!(uuidList.size() > 0)) {
+            Log.i(getLogTag(), "No uuids given");
             return serviceUuids;
         }
+
+        for (String uuid : uuidList) {
+
+            UUID uuid128 = get128BitUUID(uuid);
+
+            if (uuid128 != null) {
+                serviceUuids.add(uuid128);
+            }
+        }
+
+        return serviceUuids;
+    }
+
+    private List<UUID> getServiceUuidsFromIntegers(JSArray serviceUuidArray) throws JSONException {
+        List<UUID> serviceUuids = new ArrayList<>();
+        List<Integer> uuidList = serviceUuidArray.toList();
 
         if (!(uuidList.size() > 0)) {
             Log.i(getLogTag(), "No uuids given");
@@ -1462,6 +1509,22 @@ public class BluetoothLEClient extends Plugin {
         return UUID.fromString(uuidString);
 
 
+    }
+
+    private UUID get128BitUUID(String uuid) {
+        return UUID.fromString(uuid);
+    }
+
+    private UUID get128BitUUID(AnyUuid uuid) {
+        if (!uuid.isValid) {
+            return null;
+        }
+
+        if (uuid.intValue != null) {
+            return get128BitUUID(uuid.intValue);
+        }
+
+        return get128BitUUID(uuid.stringValue);
     }
 
     private int get16BitUUID(UUID uuid) {

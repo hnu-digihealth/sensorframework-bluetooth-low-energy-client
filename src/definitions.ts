@@ -49,6 +49,9 @@ export interface BluetoothLEClientPlugin extends WebPlugin{
 
 }
 
+export type BluetoothGATTService = BluetoothGATTServices | number | string;
+export type BluetoothGATTCharacteristic = BluetoothGATTCharacteristics | number | string;
+
 export interface BluetoothGATTAvailabilityResult{
   isAvailable: boolean
 }
@@ -62,7 +65,7 @@ export type BluetoothGATTEnableResult = {
 }
 
 export interface BluetoothGATTScanOptions{
-  services: Array<BluetoothGATTServices | number>
+  services: Array<BluetoothGATTService>
 }
 
 export interface BluetoothGATTPeripheral{
@@ -103,8 +106,8 @@ export type BluetoothGATTByteData = number[];
 
 export interface BluetoothGATTCharacteristicReadOptions{
   id: string,
-  service: BluetoothGATTServices | number,
-  characteristic: BluetoothGATTCharacteristics | number
+  service: BluetoothGATTService,
+  characteristic: BluetoothGATTCharacteristic
 }
 
 
@@ -115,8 +118,8 @@ export interface BluetoothGATTCharacteristicReadResult{
 
 export interface BluetoothGATTCharacteristicWriteOptions{
   id: string,
-  service: BluetoothGATTServices | number,
-  characteristic: BluetoothGATTCharacteristics | number
+  service: BluetoothGATTService,
+  characteristic: BluetoothGATTCharacteristic
   value: string //Base64 encoded string of byte array
 }
 
@@ -126,8 +129,8 @@ export interface BluetoothGATTCharacteristicWriteResult{
 
 export interface BluetoothGATTDescriptorReadOptions{
   id: string,
-  service: BluetoothGATTServices | number,
-  characteristic: BluetoothGATTCharacteristics | number,
+  service: BluetoothGATTService,
+  characteristic: BluetoothGATTCharacteristic,
   descriptor: number
 }
 
@@ -137,8 +140,8 @@ export interface BluetoothGATTDescriptorReadResult{
 
 export interface BluetoothGATTDescriptorWriteOptions{
   id: string,
-  service: BluetoothGATTServices | number,
-  characteristic: BluetoothGATTCharacteristics | number,
+  service: BluetoothGATTService,
+  characteristic: BluetoothGATTCharacteristic,
   descriptor: number,
   value: string //Base64 encoded string of byte array
 }
@@ -149,8 +152,8 @@ export interface BluetoothGATTDescriptorWriteResult{
 
 export interface BluetoothGATTNotificationOptions{
   id: string,
-  service: BluetoothGATTServices | number,
-  characteristic: BluetoothGATTCharacteristics | number,
+  service: BluetoothGATTService,
+  characteristic: BluetoothGATTCharacteristic,
 }
 
 export interface BluetoothGATTEnableNotificationsResult{
@@ -163,22 +166,22 @@ export interface BluetoothGATTDisableNotificationsResult{
 
 export interface GetServiceOptions{
   id:string,
-  service?: BluetoothGATTServices | number
+  service?: BluetoothGATTService
 }
 
 export interface GATTService{
-  uuid: BluetoothGATTServices | number,
+  uuid: string,
   isPrimary: boolean,
-  characteristics: Array<BluetoothGATTCharacteristics | number>,
-  included?: Array<BluetoothGATTServices | number>
+  characteristics: Array<BluetoothGATTCharacteristic>,
+  included?: Array<BluetoothGATTService>
 }
 
 export type GetServiceResult = GATTService | {services: GATTService[]};
 
 export interface GetCharacteristicOptions{
   id: string,
-  service: BluetoothGATTServices | number,
-  characteristic?: BluetoothGATTCharacteristics | number
+  service: BluetoothGATTService,
+  characteristic?: BluetoothGATTCharacteristic
 }
 
 export interface GATTCharacteristicProperties{
@@ -194,9 +197,9 @@ export interface GATTCharacteristicProperties{
 }
 
 export interface GATTCharacteristic{
-  uuid: BluetoothGATTCharacteristics | number,
+  uuid: BluetoothGATTCharacteristic,
   properties: GATTCharacteristicProperties,
-  descriptors: number[]
+  descriptors: string[]
 }
 
 export type GetCharacteristicResult = GATTCharacteristic | {characteristics: GATTCharacteristic[]};
