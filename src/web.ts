@@ -31,6 +31,7 @@ import {
 } from './definitions';
 import {get16BitUUID} from "./utils/utils";
 import {BluetoothGATTCharacteristics} from "./utils/ble-gatt-characteristics.enum";
+import {base64ToBytes} from "./utils/utils";
 import {NotConnectedError, OptionsRequiredError} from "./utils/errors";
 
 const nav: Navigator = navigator;
@@ -194,8 +195,7 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
       const gattService: BluetoothRemoteGATTService = await gatt.getPrimaryService(service);
       const gattCharacteristic: BluetoothRemoteGATTCharacteristic = await gattService.getCharacteristic(characteristic);
 
-      const encoder = new TextEncoder();
-      const toWrite = encoder.encode(value);
+      const toWrite = base64ToBytes(value);
 
       await gattCharacteristic.writeValue(toWrite)
 
@@ -256,8 +256,7 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
       const gattCharacteristic: BluetoothRemoteGATTCharacteristic = await gattService.getCharacteristic(characteristic);
       const gattDescriptor: BluetoothRemoteGATTDescriptor = await gattCharacteristic.getDescriptor(descriptor);
 
-      const encoder = new TextEncoder();
-      const toWrite = encoder.encode(value);
+      const toWrite = base64ToBytes(value);
 
       await gattDescriptor.writeValue(toWrite);
 
