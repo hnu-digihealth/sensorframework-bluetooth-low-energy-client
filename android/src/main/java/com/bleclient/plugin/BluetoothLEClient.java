@@ -904,21 +904,21 @@ public class BluetoothLEClient extends Plugin {
 
         BluetoothGatt gatt = (BluetoothGatt) connection.get(keyPeripheral);
 
-        Integer propertyCharacteristic = call.getInt(keyCharacteristic);
+        AnyUuid propertyCharacteristic = getUuid(call, keyCharacteristic);
 
-        if (propertyCharacteristic == null) {
+        if (!propertyCharacteristic.isValid) {
             call.reject(keyErrorCharacteristicMissing);
             return;
         }
 
-        Integer propertyService = call.getInt(keyService);
+        AnyUuid propertyService = getUuid(call, keyService);
 
-        if (propertyService == null) {
+        if (!propertyService.isValid) {
             call.reject(keyErrorServiceMissing);
             return;
         }
 
-        UUID service128BitUuid = get128BitUUID(propertyCharacteristic);
+        UUID service128BitUuid = get128BitUUID(propertyService);
         BluetoothGattService service = gatt.getService(service128BitUuid);
 
         if (service == null) {
