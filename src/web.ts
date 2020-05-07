@@ -20,6 +20,7 @@ import {
   BluetoothGATTNotificationOptions,
   BluetoothGATTScanOptions,
   BluetoothGATTScanResults,
+  BluetoothGATTService,
   BluetoothGATTServiceDiscoveryOptions,
   BluetoothGATTServiceDiscoveryResult,
   BluetoothLEClientPlugin,
@@ -27,19 +28,37 @@ import {
   GetCharacteristicOptions,
   GetCharacteristicResult,
   GetServiceOptions,
-  GetServiceResult
+  GetServiceResult,
+  BluetoothGATTCharacteristic
 } from './definitions';
-import {get16BitUUID} from "./utils/utils";
-import {BluetoothGATTCharacteristics} from "./utils/ble-gatt-characteristics.enum";
+import {base64ToBytes} from "./utils/utils";
 import {NotConnectedError, OptionsRequiredError} from "./utils/errors";
 
-const nav: Navigator = navigator;
+interface BluetoothProvider {
+  bluetooth: {
+    requestDevice: (options: {
+      filters: Array<{services: Array<BluetoothGATTService>}>,
+      optionalServices: Array<BluetoothGATTService>,
+      acceptAllDevices: boolean
+    }) => Promise<BluetoothDevice>;
+  }
+}
+
+// If this browser does not support bluetooth, don't fail unless we try to use it
+const nav: BluetoothProvider =
+  typeof navigator === "undefined"
+    ? { bluetooth: { requestDevice: () => {
+      throw new Error("Bluetooth is not supported");
+    } } }
+    : navigator;
 
 export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClientPlugin {
 
   private devices: Map<string, BluetoothDevice> = new Map();
 
   private connections: Map<string, any> = new Map();
+
+  private characteristicListeners: Map<string, (ev: Event) => void> = new Map();
 
   constructor() {
     super({
@@ -82,7 +101,7 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
     const filters = options.services.map((service) => {
       return {services: [service]};
     });
-    const optionalServices: number[] = options.services || [];
+    const optionalServices: BluetoothGATTService[] = options.services || [];
 
     try {
 
@@ -194,8 +213,7 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
       const gattService: BluetoothRemoteGATTService = await gatt.getPrimaryService(service);
       const gattCharacteristic: BluetoothRemoteGATTCharacteristic = await gattService.getCharacteristic(characteristic);
 
-      const encoder = new TextEncoder();
-      const toWrite = encoder.encode(value);
+      const toWrite = base64ToBytes(value);
 
       await gattCharacteristic.writeValue(toWrite)
 
@@ -256,8 +274,7 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
       const gattCharacteristic: BluetoothRemoteGATTCharacteristic = await gattService.getCharacteristic(characteristic);
       const gattDescriptor: BluetoothRemoteGATTDescriptor = await gattCharacteristic.getDescriptor(descriptor);
 
-      const encoder = new TextEncoder();
-      const toWrite = encoder.encode(value);
+      const toWrite = base64ToBytes(value);
 
       await gattDescriptor.writeValue(toWrite);
 
@@ -289,25 +306,7 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
       let gattCharacterisic: BluetoothRemoteGATTCharacteristic = await gattService.getCharacteristic(characteristic);
 
       gattCharacterisic = await gattCharacterisic.startNotifications();
-
-      gattCharacterisic.addEventListener("characteristicvaluechanged", (ev) => {
-
-        const char: BluetoothRemoteGATTCharacteristic = (ev.target) as BluetoothRemoteGATTCharacteristic;
-        const serv: BluetoothRemoteGATTService = char.service;
-        const dev: BluetoothDevice = serv.device;
-        const value = [...(new Uint8Array(char.value.buffer))];
-
-        const meta = {
-          id: dev.id,
-          service: get16BitUUID(serv.uuid),
-          characteristic: get16BitUUID(char.uuid)
-        };
-
-        this.notifyListeners(get16BitUUID(char.uuid).toString(), {...meta, value});
-      });
-
-
-
+      this.addCharacteristicValueChangedListener(gattCharacterisic);
       return {enabled: true};
     }catch (e) {
       return Promise.reject(e);
@@ -329,6 +328,7 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
       const gattService: BluetoothRemoteGATTService = await gatt.getPrimaryService(service);
       const gattCharacteristic: BluetoothRemoteGATTCharacteristic = await gattService.getCharacteristic(characteristic);
       await gattCharacteristic.stopNotifications();
+      this.removeCharacteristicValueChangedListener(gattCharacteristic);
       return {disabled: true};
     } catch (e) {
       return Promise.reject(e);
@@ -355,7 +355,7 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
         const characteristics = await this.getIncludedCharacteristicUuids(service);
 
         return {
-          uuid: get16BitUUID(service.uuid),
+          uuid: service.uuid,
           isPrimary: service.isPrimary,
           characteristics
         };
@@ -386,7 +386,7 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
       const {uuid, isPrimary} = gattService;
 
       return {
-        uuid: get16BitUUID(uuid),
+        uuid,
         isPrimary,
         characteristics
       }
@@ -422,7 +422,7 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
         const properties = this.getCharacteristicProperties(characteristic);
 
         return {
-          uuid: get16BitUUID(uuid),
+          uuid,
           properties,
           descriptors
         }
@@ -454,7 +454,7 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
       const gattCharacteristic = await gattService.getCharacteristic(characteristic);
       const descriptors = await this.getIncludedDescriptorUuids(gattCharacteristic);
       const properties = this.getCharacteristicProperties(gattCharacteristic);
-      const uuid = get16BitUUID(gattCharacteristic.uuid);
+      const uuid = gattCharacteristic.uuid;
 
       return {
         uuid,
@@ -505,7 +505,7 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
     };
   }
 
-  private async getIncludedCharacteristicUuids(service: BluetoothRemoteGATTService): Promise<Array<BluetoothGATTCharacteristics | number>> {
+  private async getIncludedCharacteristicUuids(service: BluetoothRemoteGATTService): Promise<Array<BluetoothGATTCharacteristic>> {
     let characteristics: BluetoothRemoteGATTCharacteristic[] = [];
 
     try {
@@ -514,10 +514,10 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
       return Promise.reject(e);
     }
 
-    return characteristics.map((characteristic) => get16BitUUID(characteristic.uuid));
+    return characteristics.map((characteristic) => characteristic.uuid);
   }
 
-  private async getIncludedDescriptorUuids(characteristic: BluetoothRemoteGATTCharacteristic): Promise<number[]>{
+  private async getIncludedDescriptorUuids(characteristic: BluetoothRemoteGATTCharacteristic): Promise<string[]>{
 
     let descriptors: BluetoothRemoteGATTDescriptor [] = [];
 
@@ -527,10 +527,38 @@ export class BluetoothLEClientWeb extends WebPlugin implements BluetoothLEClient
       console.log(e);
     }
 
-    return descriptors.map((descriptor) => get16BitUUID(descriptor.uuid));
+    return descriptors.map((descriptor) => descriptor.uuid);
   }
 
+  private addCharacteristicValueChangedListener(gattCharacterisic: BluetoothRemoteGATTCharacteristic): void {
+    const uuid = gattCharacterisic.uuid;
 
+    if (!this.characteristicListeners.get(uuid)) {
+      this.characteristicListeners.set(uuid, (ev) => {
+        const char: BluetoothRemoteGATTCharacteristic = (ev.target) as BluetoothRemoteGATTCharacteristic;
+        const serv: BluetoothRemoteGATTService = char.service;
+        const dev: BluetoothDevice = serv.device;
+        const value = [...(new Uint8Array(char.value.buffer))];
+
+        const meta = {
+          id: dev.id,
+          service: serv.uuid,
+          characteristic: char.uuid
+        };
+
+        this.notifyListeners(char.uuid, {...meta, value});
+      });
+
+      gattCharacterisic.addEventListener("characteristicvaluechanged", this.characteristicListeners.get(uuid));
+    }
+  }
+
+  private removeCharacteristicValueChangedListener(gattCharacteristic: BluetoothRemoteGATTCharacteristic): void {
+    const uuid = gattCharacteristic.uuid;
+    const listener = this.characteristicListeners.get(uuid);
+    gattCharacteristic.removeEventListener("characteristicvaluechanged", listener);
+    this.characteristicListeners.delete(uuid);
+  }
 
 }
 
